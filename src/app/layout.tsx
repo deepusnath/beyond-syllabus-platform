@@ -23,7 +23,12 @@ export const metadata: Metadata = {
     siteName: "Beyond Syllabus",
     type: "website",
     locale: "en_IN",
-    images: [{ url: "/poster/beyond-syllabus-2026.jpg", width: 1278, height: 1600, alt: "Bridge The Gap 4.0 — Beyond Syllabus poster" }],
+    images: [
+      // Landscape card first — WhatsApp and most platforms use the first
+      // og:image and only render large previews for ~1.91:1 images.
+      { url: "/og/share-card.jpg", width: 1200, height: 630, alt: "Bridge The Gap 4.0 — Beyond Syllabus, a symposium for the future of education" },
+      { url: "/poster/beyond-syllabus-2026.jpg", width: 1278, height: 1600, alt: "Bridge The Gap 4.0 — Beyond Syllabus poster" },
+    ],
   },
   twitter: { card: "summary_large_image" },
 };
