@@ -9,7 +9,7 @@ import type { SiteConfig } from "@/lib/types";
 export const site: SiteConfig = {
   name: "Beyond Syllabus",
   tagline: "A four-month journey to redesign education for the next generation.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyondsyllabus.purplemovement.in",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://beyond-syllabus-pearl.vercel.app",
   live: {
     streamUrl: process.env.NEXT_PUBLIC_LIVE_STREAM_URL || undefined,
     forceLive: process.env.NEXT_PUBLIC_FORCE_LIVE === "true",
