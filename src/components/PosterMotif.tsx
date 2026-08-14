@@ -19,18 +19,14 @@ export function PosterMotif({ className }: { className?: string }) {
           <stop offset="1" stopColor="#7a24ad" />
         </linearGradient>
       </defs>
-      {/* Entry ribbon from the top edge, sweeping toward the loop */}
-      <path
-        d="M553 -80 L553 210 C553 360 460 470 360 520"
-        stroke="url(#ribbon)"
-        strokeWidth="150"
-        strokeLinejoin="round"
-      />
+      {/* One uniform 150-wide ribbon: the loop is a stroked circle, and the
+          entry/stem bars meet its centerline tangentially at its rightmost
+          and leftmost points, so thickness never varies. */}
+      <circle cx="340" cy="630" r="205" stroke="url(#ribbon)" strokeWidth="150" fill="none" />
+      {/* Entry ribbon from the top edge, tangent to the loop's right */}
+      <path d="M545 -80 L545 630" stroke="url(#ribbon)" strokeWidth="150" />
       {/* Stem descending off the bottom edge, tangent to the loop's left */}
-      <path d="M210 620 L210 1080" stroke="url(#ribbon)" strokeWidth="150" />
-      {/* The loop */}
-      <circle cx="340" cy="630" r="205" fill="url(#ribbon)" />
-      <circle cx="340" cy="630" r="130" fill="var(--color-paper)" />
+      <path d="M135 630 L135 1080" stroke="url(#ribbon)" strokeWidth="150" />
       {/* Dotted ring in the counter, rotating extremely slowly */}
       <g
         className="animate-spin-slowest"
