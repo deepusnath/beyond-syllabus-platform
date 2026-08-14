@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Beyond Syllabus design tokens — derived from the Bridge The Gap 4.0 poster:
+  white ground, ink-black condensed type, one dominant purple (with gradient
+  depth), and two small signal accents (mint, signal orange). Nothing else.
+*/
+@theme {
+  --color-paper: #fdfcfb;
+  --color-ink: #16121a;
+  --color-ink-soft: #4a4452;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-purple: #9c34d0;
+  --color-purple-deep: #6d1f9e;
+  --color-purple-dark: #2c0f45;
+  --color-purple-bright: #b44ce4;
+  --color-purple-soft: #f3e8fa;
+  --color-purple-line: #e3cff2;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-mint: #55e0ac;
+  --color-signal: #ff4b2b;
+
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-condensed: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --radius-chip: 0.375rem;
+
+  --animate-spin-slowest: spin 90s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }
 
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-purple);
+  color: #fff;
+}
+
+/* Display type: condensed, tight, uppercase — the poster voice */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
+
+.condensed {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+}
+
+/* Kicker label: small condensed uppercase with a leading tick */
+.kicker {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* The poster's purple ribbon gradient */
+.ribbon-gradient {
+  background-image: linear-gradient(135deg, #b44ce4 0%, #9c34d0 45%, #7a24ad 100%);
+}
+
+.text-gradient-purple {
+  background-image: linear-gradient(120deg, #b44ce4, #7a24ad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll reveal — opt-in via .reveal, activated by [data-revealed] */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visibility — WCAG */
+:focus-visible {
+  outline: 3px solid var(--color-purple);
+  outline-offset: 2px;
+}
+
+/* Live pulse dot */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.live-dot {
+  animation: live-pulse 1.6s ease-in-out infinite;
 }
