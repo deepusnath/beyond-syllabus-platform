@@ -41,7 +41,7 @@ export default function OutcomesPage() {
         </div>
         <p className="mt-6 max-w-2xl leading-relaxed text-paper/80">
           The final report is being built in public across the four months — its evidence
-          accumulates in the Knowledge Commons, its recommendations in the idea pipeline, and its
+          accumulates in the Capability Commons, its recommendations in the idea pipeline, and its
           prototypes in the lab. When it is complete, it will be downloadable here.
         </p>
         <ul className="mt-8 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-3">

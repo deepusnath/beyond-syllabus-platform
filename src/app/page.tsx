@@ -106,7 +106,7 @@ export default function HomePage() {
             All conversations
           </CtaLink>
           <CtaLink href="/commons" tone="outline">
-            Knowledge Commons
+            Capability Commons
           </CtaLink>
         </div>
       </section>

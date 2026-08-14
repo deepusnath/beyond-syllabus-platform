@@ -56,7 +56,7 @@ Everything renders from `src/data/`:
 - **Schedules & relay legs** — `src/data/sessions.ts`
 - **Speakers** — `src/data/speakers.ts` (add a `photo` path under `public/` when available)
 - **Conversation records** — `src/data/conversations.ts` (video URL, summary, transcript status, agreements/disagreements, resources)
-- **Knowledge Commons themes** — `src/data/topics.ts`
+- **Capability Commons themes** — `src/data/topics.ts`
 - **Ideas** — `src/data/ideas.ts` (statuses: idea → exploring → prototyping → testing → validated → recommended)
 - **Prototypes** — `src/data/prototypes.ts`
 - **Site config & social links** — `src/data/site.ts`

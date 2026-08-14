@@ -1,7 +1,7 @@
 import type { Topic } from "@/lib/types";
 
 /*
- * Knowledge Commons themes. The themes themselves are the confirmed
+ * Capability Commons themes. The themes themselves are the confirmed
  * structure of the archive; aggregated content within them is sample
  * seed data until real documentation lands.
  */

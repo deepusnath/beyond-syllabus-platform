@@ -17,7 +17,7 @@ const columns = [
     title: "The Record",
     links: [
       { href: "/conversations", label: "Documentation" },
-      { href: "/commons", label: "Knowledge Commons" },
+      { href: "/commons", label: "Capability Commons" },
       { href: "/ideas", label: "Ideas" },
       { href: "/prototypes", label: "Prototypes" },
       { href: "/outcomes", label: "Outcomes" },

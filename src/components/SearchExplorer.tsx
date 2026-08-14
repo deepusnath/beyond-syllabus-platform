@@ -48,7 +48,7 @@ export function SearchExplorer({ index }: { index: SearchRecord[] }) {
       {query.trim() === "" ? (
         <p className="mt-8 max-w-xl text-ink-soft">
           One search across the whole public record: events, voices, conversations, transcript
-          references, Knowledge Commons topics, ideas and prototypes.
+          references, Capability Commons topics, ideas and prototypes.
         </p>
       ) : results.length === 0 ? (
         <p className="mt-8 max-w-xl text-ink-soft">
