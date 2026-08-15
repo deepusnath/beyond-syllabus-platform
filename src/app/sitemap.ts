@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getConversations, getPrototypes, getSite, getSpeakers, getTopics } from "@/lib/content";
+import { getConversations, getPrototypes, getSite, getTopics } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSite().url;
@@ -7,7 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/journey",
     "/live",
-    "/voices",
     "/conversations",
     "/commons",
     "/ideas",
@@ -22,8 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
+  // /voices routes are omitted while the section is hidden (sample content only).
   const dynamicRoutes = [
-    ...getSpeakers().map((s) => `/voices/${s.slug}`),
     ...getConversations().map((c) => `/conversations/${c.slug}`),
     ...getTopics().map((t) => `/commons/${t.slug}`),
     ...getPrototypes().map((p) => `/prototypes/${p.slug}`),

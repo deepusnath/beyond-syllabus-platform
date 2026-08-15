@@ -3,7 +3,6 @@ import {
   getEvents,
   getIdeas,
   getPrototypes,
-  getSpeakers,
   getTopics,
 } from "@/lib/content";
 
@@ -44,16 +43,9 @@ export function buildSearchIndex(): SearchRecord[] {
       text: [e.title, e.audience, e.question, e.description].join(" ").toLowerCase(),
     });
   }
-  for (const s of getSpeakers()) {
-    records.push({
-      type: "voice",
-      title: s.name,
-      href: `/voices/${s.slug}`,
-      snippet: s.keyIdea,
-      text: [s.name, s.role, s.organisation, s.bio, s.keyIdea].join(" ").toLowerCase(),
-      sample: s.sample,
-    });
-  }
+  // Voices are excluded from search while the section is hidden (sample
+  // content only) — restore this block alongside the nav entry.
+  // for (const s of getSpeakers()) { ... }
   for (const c of getConversations()) {
     records.push({
       type: "conversation",

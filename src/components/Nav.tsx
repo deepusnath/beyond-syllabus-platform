@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLiveStatus } from "@/components/useLiveStatus";
 
+// Voices is hidden until real speakers are announced — restore the entry
+// { href: "/voices", label: "Voices" } here (and in Footer) to bring it back.
 const primary = [
   { href: "/journey", label: "Journey" },
-  { href: "/voices", label: "Voices" },
   { href: "/commons", label: "Commons" },
   { href: "/prototypes", label: "Prototypes" },
   { href: "/outcomes", label: "Outcomes" },
