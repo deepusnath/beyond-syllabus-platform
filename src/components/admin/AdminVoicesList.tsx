@@ -71,6 +71,12 @@ export function AdminVoiceRow({ speaker, sessionTitle }: { speaker: Speaker; ses
         >
           Edit
         </Link>
+        <Link
+          href={`/admin/voices/${speaker.slug}/poster`}
+          className="condensed border-2 border-purple px-3 py-2 text-xs font-semibold tracking-[0.12em] text-purple-deep hover:bg-purple hover:text-white"
+        >
+          Poster
+        </Link>
         {confirming ? (
           <span className="flex items-center gap-2">
             <button
