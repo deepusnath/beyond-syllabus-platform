@@ -135,7 +135,14 @@ export function PrototypeCard({ prototype }: { prototype: Prototype }) {
 export function VoiceCard({ speaker }: { speaker: Speaker }) {
   return (
     <article className="group flex flex-col border-b-2 border-ink pb-6 transition-colors hover:border-purple">
-      <div className="flex aspect-square items-center justify-center bg-purple-soft">
+      {/* tabIndex -1: the heading link is the card's keyboard entry point;
+          the photo is a duplicate pointer target, not a second tab stop. */}
+      <Link
+        href={`/voices/${speaker.slug}`}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="flex aspect-square items-center justify-center bg-purple-soft"
+      >
         {speaker.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={speaker.photo} alt="" className="h-full w-full object-cover" />
@@ -144,7 +151,7 @@ export function VoiceCard({ speaker }: { speaker: Speaker }) {
             {speaker.name.charAt(0)}
           </span>
         )}
-      </div>
+      </Link>
       <div className="pt-4">
         {speaker.sample && <SampleBadge className="mb-2" />}
         <h3 className="display text-2xl text-ink group-hover:text-purple-deep">

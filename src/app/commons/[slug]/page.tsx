@@ -44,6 +44,12 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <Link
+        href="/commons"
+        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
+      >
+        ← All themes
+      </Link>
       <Kicker>Capability Commons</Kicker>
       <h1 className="display mt-4 text-6xl sm:text-8xl">{topic.title}</h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">{topic.description}</p>

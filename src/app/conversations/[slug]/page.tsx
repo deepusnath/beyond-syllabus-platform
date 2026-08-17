@@ -61,6 +61,12 @@ export default async function ConversationPage({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
+      <Link
+        href="/conversations"
+        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
+      >
+        ← All conversations
+      </Link>
       <div className="flex flex-wrap items-center gap-3">
         <Chip tone="purple">{event?.dateLabel}</Chip>
         <p className="condensed text-sm font-semibold tracking-[0.16em] text-ink-soft">

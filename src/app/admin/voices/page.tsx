@@ -6,7 +6,9 @@ import { AdminVoiceRow, LogoutButton } from "@/components/admin/AdminVoicesList"
 export const dynamic = "force-dynamic";
 
 export default async function AdminVoicesPage() {
-  const speakers = await getAuthoritativeSpeakers();
+  const speakers = (await getAuthoritativeSpeakers()).sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
   const sessions = getSessions();
   const sessionTitle = (id: string) => sessions.find((s) => s.id === id)?.title ?? id;
 

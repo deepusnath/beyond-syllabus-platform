@@ -18,7 +18,9 @@ const filters: (StakeholderGroup | "all")[] = [
 
 export function VoicesExplorer() {
   const [active, setActive] = useState<StakeholderGroup | "all">("all");
-  const speakers = getSpeakers().filter((s) => active === "all" || s.category === active);
+  const speakers = getSpeakers()
+    .filter((s) => active === "all" || s.category === active)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div>

@@ -43,6 +43,12 @@ export default async function PrototypePage({ params }: { params: Promise<{ slug
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
+      <Link
+        href="/prototypes"
+        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
+      >
+        ← Prototype lab
+      </Link>
       <div className="flex flex-wrap items-center gap-3">
         <Chip tone="mint">{statusLabels[prototype.status]}</Chip>
         {prototype.sample && <SampleBadge />}

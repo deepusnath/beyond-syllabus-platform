@@ -41,6 +41,12 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
+      <Link
+        href="/voices"
+        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
+      >
+        ← All voices
+      </Link>
       {speaker.sample && <SampleBadge className="mb-6" />}
       <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -142,6 +148,14 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
           </ul>
         </aside>
       </div>
+      <p className="mt-16 border-t-2 border-ink pt-8">
+        <Link
+          href="/voices"
+          className="condensed text-sm font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
+        >
+          ← All voices
+        </Link>
+      </p>
     </article>
   );
 }
