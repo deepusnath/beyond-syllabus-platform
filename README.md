@@ -87,7 +87,40 @@ region legs in `src/data/sessions.ts`.
 NEXT_PUBLIC_SITE_URL=...           # canonical URL for metadata/sitemap
 NEXT_PUBLIC_LIVE_STREAM_URL=...    # current/latest broadcast embed
 NEXT_PUBLIC_FORCE_LIVE=true|false  # manual live override
+ADMIN_SECRET=...                   # organiser passcode for /admin
+GITHUB_CONTENT_TOKEN=...           # fine-grained PAT for publishing from the admin
 ```
+
+## Organiser admin (`/admin/voices`)
+
+Organisers manage the Voices section from the web — no developer needed.
+
+**Getting in.** Open `/admin/voices` and enter the organiser passcode. Ask the site owner
+for it. Sessions last 7 days per browser.
+
+**Adding a voice.** *Add a voice* → fill name, role, organisation, stakeholder group and
+session → choose a photo (a clear face shot, at least 600px wide, works best) → drag and
+zoom until the face sits in the ring the way you want it — what you see is exactly the
+published headshot → *Publish this voice*. The change goes live automatically in about a
+minute. Bio and key idea are optional; leave them empty rather than guessing.
+
+**Fixing mistakes.** Every voice has *Edit* (photo re-crop optional) and *Remove* (asks
+for confirmation). The page address (slug) can't change after publishing.
+
+**How it works (git-as-CMS).** Publishing commits `content/speakers.json` and the processed
+headshot to `main` in one atomic commit via the GitHub API; the normal auto-deploy does the
+rest. Every content change is therefore versioned and publicly attributable — in keeping
+with the initiative's public-record ethos. The server needs `GITHUB_CONTENT_TOKEN`, a
+**fine-grained PAT** (GitHub → Settings → Developer settings → Fine-grained tokens) scoped
+to **only this repository** with **Contents: Read and write** — nothing else. Rotate it any
+time; publishing fails safely with a clear error when it's missing. In local development
+without the token, publishes write to the working tree instead.
+
+**Secret rotation.** Change `ADMIN_SECRET` in Vercel env settings and redeploy — every
+organiser session is invalidated immediately (the session cookie is derived from it).
+Threat model note: the admin is a single-privilege gate for a small trusted team; the
+session cookie is HTTP-only, never logged, and grants only what the passcode grants.
+If the team grows beyond a shared passcode, per-person GitHub OAuth is the upgrade path.
 
 ## Architecture notes
 
