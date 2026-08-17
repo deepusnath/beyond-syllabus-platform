@@ -1,6 +1,6 @@
 import { events } from "@/data/events";
 import { sessions } from "@/data/sessions";
-import { speakers } from "@/data/speakers";
+import { speakers } from "@/lib/speakers-store";
 import { conversations } from "@/data/conversations";
 import { topics } from "@/data/topics";
 import { ideas } from "@/data/ideas";
