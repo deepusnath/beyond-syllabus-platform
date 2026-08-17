@@ -178,17 +178,5 @@
       "s-listen-1"
     ],
     "conversationSlugs": []
-  },
-  {
-    "slug": "publish-test-remove-me",
-    "name": "Publish Test Remove Me",
-    "role": "End-to-end test",
-    "organisation": "Will be removed shortly",
-    "category": "students",
-    "photo": "/voices/publish-test-remove-me.jpg",
-    "sessionIds": [
-      "s-listen-1"
-    ],
-    "conversationSlugs": []
   }
 ]
