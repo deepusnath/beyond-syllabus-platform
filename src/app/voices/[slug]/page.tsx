@@ -42,11 +42,27 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
       {speaker.sample && <SampleBadge className="mb-6" />}
-      <Kicker>{stakeholderLabels[speaker.category]}</Kicker>
-      <h1 className="display mt-4 text-6xl sm:text-7xl">{speaker.name}</h1>
-      <p className="mt-3 text-lg text-ink-soft">
-        {speaker.role} · {speaker.organisation}
-      </p>
+      <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <Kicker>{stakeholderLabels[speaker.category]}</Kicker>
+          <h1 className="display mt-4 text-6xl sm:text-7xl">{speaker.name}</h1>
+          <p className="mt-3 text-lg text-ink-soft">
+            {speaker.role} · {speaker.organisation}
+          </p>
+        </div>
+        {speaker.photo && (
+          // The framed headshot cropped to a circle: portrait + white ring,
+          // purple corners trimmed away.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={speaker.photo}
+            alt={`${speaker.name} — portrait`}
+            width={208}
+            height={208}
+            className="h-40 w-40 shrink-0 rounded-full object-cover sm:h-52 sm:w-52"
+          />
+        )}
+      </div>
 
       {/* The contribution comes first — ideas over status */}
       {speaker.keyIdea && (

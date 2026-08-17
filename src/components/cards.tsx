@@ -150,14 +150,11 @@ export function VoiceCard({ speaker }: { speaker: Speaker }) {
         <h3 className="display text-2xl text-ink group-hover:text-purple-deep">
           <Link href={`/voices/${speaker.slug}`}>{speaker.name}</Link>
         </h3>
+        {/* Card content is deliberately uniform — key ideas and bios live on
+            the profile page so the grid keeps its rhythm. */}
         <p className="mt-1 text-sm text-ink-soft">
           {speaker.role} · {speaker.organisation}
         </p>
-        {speaker.keyIdea && (
-          <p className="mt-3 border-l-2 border-purple pl-3 text-sm font-medium leading-snug text-ink">
-            “{speaker.keyIdea}”
-          </p>
-        )}
         <p className="condensed mt-3 text-[0.65rem] font-medium tracking-[0.18em] text-ink-soft">
           {stakeholderLabels[speaker.category]}
         </p>
