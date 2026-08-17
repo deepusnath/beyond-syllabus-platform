@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!speaker) return {};
   return {
     title: speaker.name,
-    description: `${speaker.role}, ${speaker.organisation} — ${speaker.keyIdea}`,
+    description: `${speaker.role}, ${speaker.organisation}${speaker.keyIdea ? ` — ${speaker.keyIdea}` : " — a voice of Beyond Syllabus"}`,
   };
 }
 
@@ -49,17 +49,29 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
       </p>
 
       {/* The contribution comes first — ideas over status */}
-      <blockquote className="mt-10 border-l-4 border-purple bg-purple-soft/60 px-6 py-6">
-        <p className="kicker text-purple-deep">Key idea</p>
-        <p className="mt-3 text-2xl font-semibold leading-snug text-ink sm:text-3xl">
-          “{speaker.keyIdea}”
-        </p>
-      </blockquote>
+      {speaker.keyIdea && (
+        <blockquote className="mt-10 border-l-4 border-purple bg-purple-soft/60 px-6 py-6">
+          <p className="kicker text-purple-deep">Key idea</p>
+          <p className="mt-3 text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+            “{speaker.keyIdea}”
+          </p>
+        </blockquote>
+      )}
 
       <div className="mt-10 grid gap-10 md:grid-cols-[1fr_18rem]">
         <div>
-          <h2 className="kicker">About</h2>
-          <p className="mt-3 leading-relaxed text-ink-soft">{speaker.bio}</p>
+          {speaker.bio ? (
+            <>
+              <h2 className="kicker">About</h2>
+              <p className="mt-3 leading-relaxed text-ink-soft">{speaker.bio}</p>
+            </>
+          ) : (
+            <p className="leading-relaxed text-ink-soft">
+              {speaker.name} joins Beyond Syllabus as part of the conversation. Their
+              contribution will be documented here — with the session record and transcript —
+              as the archive grows.
+            </p>
+          )}
 
           {conversations.length > 0 && (
             <>

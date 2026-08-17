@@ -11,7 +11,7 @@ export const conversations: Conversation[] = [
     title: "What needs to change?",
     eventId: "listen",
     date: "2026-08-15",
-    participantSlugs: ["sample-student-voice", "sample-community-voice"],
+    participantSlugs: [],
     stakeholders: ["students", "community"],
     topicSlugs: ["student-agency", "assessment", "curriculum", "learning-communities"],
     summary:
@@ -60,7 +60,7 @@ export const conversations: Conversation[] = [
     title: "What should education become?",
     eventId: "question",
     date: "2026-09-05",
-    participantSlugs: ["sample-educator-voice", "sample-researcher-voice", "sample-policy-voice"],
+    participantSlugs: [],
     stakeholders: ["educators", "researchers", "policymakers"],
     topicSlugs: ["teacher-development", "assessment", "higher-education", "policy"],
     summary:
@@ -101,7 +101,7 @@ export const conversations: Conversation[] = [
     title: "What capabilities will the future demand?",
     eventId: "connect",
     date: "2026-10-02",
-    participantSlugs: ["sample-industry-voice", "sample-global-voice", "sample-community-voice"],
+    participantSlugs: [],
     stakeholders: ["industry", "global", "community"],
     topicSlugs: ["employability", "skills", "future-of-work", "ai-and-education", "industry-academia-gap"],
     summary:

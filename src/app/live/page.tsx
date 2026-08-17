@@ -45,6 +45,11 @@ export default function LivePage() {
                 </Link>
               </li>
               <li>
+                <Link href="/voices" className="text-purple-deep underline-offset-4 hover:underline">
+                  Who is speaking
+                </Link>
+              </li>
+              <li>
                 <Link href="/participate" className="text-purple-deep underline-offset-4 hover:underline">
                   Join the conversation
                 </Link>

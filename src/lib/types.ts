@@ -58,9 +58,10 @@ export interface Speaker {
   role: string;
   organisation: string;
   category: StakeholderGroup;
-  bio: string;
-  /** The one idea/contribution they bring — ideas over status. */
-  keyIdea: string;
+  /** Optional until provided — never fabricated. */
+  bio?: string;
+  /** The one idea/contribution they bring — ideas over status. Optional until captured. */
+  keyIdea?: string;
   photo?: string;
   sessionIds: string[];
   conversationSlugs: string[];

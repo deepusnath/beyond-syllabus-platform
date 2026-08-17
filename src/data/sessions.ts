@@ -1,29 +1,37 @@
 import type { Session } from "@/lib/types";
 
 /*
- * ⚠ SAMPLE CONTENT — placeholder schedule used to develop the live
- * experience. Confirmed schedules replace these entries per event.
+ * Session 1 is confirmed. Entries flagged `sample: true` are placeholder
+ * schedule used to develop the live experience; confirmed schedules
+ * replace them per event.
  */
 export const sessions: Session[] = [
+  // Confirmed: Session 1, per the official speaker announcements.
   {
     id: "s-listen-1",
     eventId: "listen",
-    title: "Opening circle: what needs to change?",
+    title: "Session 1: Students & Student Communities Shaping the Future",
     start: "2026-08-15T15:00:00+05:30",
-    end: "2026-08-15T16:30:00+05:30",
-    speakerIds: ["sample-student-voice", "sample-community-voice"],
-    description: "Students and student communities set the agenda for the four months ahead.",
-    sample: true,
-  },
-  {
-    id: "s-listen-2",
-    eventId: "listen",
-    title: "Open floor: student communities respond",
-    start: "2026-08-15T16:30:00+05:30",
     end: "2026-08-15T18:00:00+05:30",
-    speakerIds: [],
-    description: "Moderated open conversation across participating student communities.",
-    sample: true,
+    speakerIds: [
+      "claire-c-john",
+      "nino-k-m",
+      "aparna-rajesh",
+      "fathima-basheer",
+      "prakhar-sharma",
+      "diya-bhatt",
+      "aromal-m",
+      "kavya",
+      "parvathy-v-nair",
+      "salahudheen-thajudheen",
+      "vedha-mahadevan",
+      "arthalal-c",
+      "bhavya-sunil",
+      "akshat-pradeep",
+      "arundhathi-krishna",
+    ],
+    description:
+      "Students and student communities open the journey — the generation experiencing the education system directly sets the agenda.",
   },
   {
     id: "s-question-1",

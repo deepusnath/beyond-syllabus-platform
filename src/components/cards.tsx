@@ -153,9 +153,11 @@ export function VoiceCard({ speaker }: { speaker: Speaker }) {
         <p className="mt-1 text-sm text-ink-soft">
           {speaker.role} · {speaker.organisation}
         </p>
-        <p className="mt-3 border-l-2 border-purple pl-3 text-sm font-medium leading-snug text-ink">
-          “{speaker.keyIdea}”
-        </p>
+        {speaker.keyIdea && (
+          <p className="mt-3 border-l-2 border-purple pl-3 text-sm font-medium leading-snug text-ink">
+            “{speaker.keyIdea}”
+          </p>
+        )}
         <p className="condensed mt-3 text-[0.65rem] font-medium tracking-[0.18em] text-ink-soft">
           {stakeholderLabels[speaker.category]}
         </p>
