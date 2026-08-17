@@ -47,6 +47,36 @@ export function VoiceForm({ sessions, existing }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<{ slug: string; mode: string } | null>(null);
+  const [deployed, setDeployed] = useState(false);
+
+  // After a GitHub publish, the change is only live once the automatic
+  // deploy finishes (~1 min). Poll the public page so the "view" button
+  // never leads to a 404.
+  useEffect(() => {
+    if (!done) return;
+    if (done.mode !== "github") {
+      setDeployed(true);
+      return;
+    }
+    let cancelled = false;
+    const check = async () => {
+      try {
+        const res = await fetch(`/voices/${done.slug}`, { method: "HEAD", cache: "no-store" });
+        if (res.ok) {
+          if (!cancelled) setDeployed(true);
+          return;
+        }
+      } catch {
+        // network hiccup — keep polling
+      }
+      if (!cancelled) setTimeout(check, 5000);
+    };
+    const id = setTimeout(check, 15_000); // deploys never finish faster than this
+    return () => {
+      cancelled = true;
+      clearTimeout(id);
+    };
+  }, [done]);
 
   // Revoke the previous object URL whenever a new photo replaces it.
   const prevUrlRef = useRef<string | null>(null);
@@ -156,16 +186,25 @@ export function VoiceForm({ sessions, existing }: Props) {
   if (done) {
     return (
       <div role="status" className="border-l-4 border-mint bg-purple-soft/50 p-6">
-        <p className="display text-3xl">Published.</p>
+        <p className="display text-3xl">{deployed ? "Published — live." : "Published."}</p>
         <p className="mt-3 text-sm text-ink-soft">
-          {done.mode === "github"
-            ? "The change is committed — it goes live with the automatic deploy in about a minute."
-            : "Written to the local working tree (development mode)."}
+          {done.mode !== "github"
+            ? "Written to the local working tree (development mode)."
+            : deployed
+              ? "The deploy has finished — the profile is live on the public site."
+              : "The change is committed. The automatic deploy is running — this usually takes about a minute, and the button below unlocks the moment the page is live."}
         </p>
-        <div className="mt-5 flex flex-wrap gap-4">
-          <Link href={`/voices/${done.slug}`} className="condensed bg-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] text-paper hover:bg-purple-deep">
-            View the profile →
-          </Link>
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          {deployed ? (
+            <Link href={`/voices/${done.slug}`} className="condensed bg-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] text-paper hover:bg-purple-deep">
+              View the profile →
+            </Link>
+          ) : (
+            <span className="condensed inline-flex items-center gap-2 border-2 border-dashed border-ink/40 px-5 py-3 text-sm font-semibold tracking-[0.12em] text-ink-soft">
+              <span aria-hidden className="live-dot h-2 w-2 rounded-full bg-purple" />
+              Deploying…
+            </span>
+          )}
           <Link href="/admin/voices" className="condensed border-2 border-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] hover:bg-purple-soft">
             Back to all voices
           </Link>
