@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Inter, Oswald } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { ChromeGate } from "@/components/ChromeGate";
 import { getSite } from "@/lib/content";
 import "./globals.css";
 
@@ -43,9 +44,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <Nav />
+        <ChromeGate>
+          <Nav />
+        </ChromeGate>
         <main id="main">{children}</main>
-        <Footer />
+        <ChromeGate>
+          <Footer />
+        </ChromeGate>
       </body>
     </html>
   );
