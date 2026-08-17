@@ -178,5 +178,19 @@
       "s-listen-1"
     ],
     "conversationSlugs": []
+  },
+  {
+    "slug": "deepu-s-nath",
+    "name": "Deepu S Nath",
+    "role": "Founder",
+    "organisation": "The Purple Movement",
+    "category": "global",
+    "bio": "Deepu S Nath is the Founder of The Purple Movement, driven by a belief that young people don’t just need opportunities; they need spaces where their ideas, questions, and voices are genuinely valued. His work brings young people together, encourages them to think differently, and turns conversations into meaningful action.",
+    "keyIdea": "Creating spaces where young people turn ideas into meaningful action and build the confidence to shape their own futures.",
+    "photo": "/voices/deepu-s-nath.jpg",
+    "sessionIds": [
+      "s-build-1"
+    ],
+    "conversationSlugs": []
   }
 ]
