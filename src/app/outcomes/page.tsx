@@ -6,7 +6,7 @@ import { SectionHeading, Chip } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Outcomes",
   description:
-    "What we heard, what we learned, what we built, what we recommend — the December 2026 public record of Beyond Syllabus, submitted to the relevant Union Ministry.",
+    "What we heard, what we learned, what we built, what we recommend — the public record of Beyond Syllabus, handed to the decision makers of every stakeholder group on Republic Day 2027.",
 };
 
 /*
@@ -27,8 +27,8 @@ export default function OutcomesPage() {
     <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
       <SectionHeading
         kicker="Policy & outcomes"
-        title="The December record"
-        lede="Beyond Syllabus ends in something you can hold: consolidated evidence, practical recommendations and working prototypes, submitted to the relevant Union Ministry in December 2026."
+        title="The handover"
+        lede="Beyond Syllabus ends in something you can hold. On Human Rights Day (December 10) the Global Action Network hears what was built; on Republic Day (January 26, 2027) the consolidated evidence, practical recommendations and working prototypes are handed over to the decision makers of every stakeholder group — including the relevant Union Ministry."
       />
 
       <OutcomePipeline />
@@ -36,13 +36,14 @@ export default function OutcomesPage() {
       {/* The future report */}
       <section className="mt-20 bg-ink px-6 py-12 text-paper sm:px-10 lg:px-14">
         <div className="flex flex-wrap items-center gap-4">
-          <h2 className="display text-4xl sm:text-5xl">The December 2026 Report</h2>
+          <h2 className="display text-4xl sm:text-5xl">The Handover Report</h2>
           <Chip tone="mint">In development</Chip>
         </div>
         <p className="mt-6 max-w-2xl leading-relaxed text-paper/80">
-          The final report is being built in public across the four months — its evidence
-          accumulates in the Capability Commons, its recommendations in the idea pipeline, and its
-          prototypes in the lab. When it is complete, it will be downloadable here.
+          The report is being built in public across the journey — its evidence accumulates in
+          the Capability Commons, its recommendations in the idea pipeline, and its prototypes in
+          the lab. It is handed over on Republic Day, January 26, 2027, and will be downloadable
+          here.
         </p>
         <ul className="mt-8 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-3">
           {reportSections.map((s) => (
@@ -58,7 +59,7 @@ export default function OutcomesPage() {
           aria-disabled="true"
           className="condensed mt-10 inline-flex cursor-not-allowed items-center gap-3 border-2 border-dashed border-paper/40 px-7 py-4 text-base font-semibold tracking-[0.1em] text-paper/60"
         >
-          Download the December 2026 report — in development
+          Download the Handover Report — in development
         </p>
       </section>
 

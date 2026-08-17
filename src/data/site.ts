@@ -8,7 +8,7 @@ import type { SiteConfig } from "@/lib/types";
  */
 export const site: SiteConfig = {
   name: "Beyond Syllabus",
-  tagline: "A four-month journey to redesign education for the next generation.",
+  tagline: "A five-month journey to redesign education for the next generation.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://capabilitycommons.com",
   live: {
     streamUrl: process.env.NEXT_PUBLIC_LIVE_STREAM_URL || undefined,

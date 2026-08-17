@@ -4,7 +4,7 @@ const stages = [
   { label: "What we heard", detail: "Every conversation documented — questions, agreements, disagreements.", href: "/conversations" },
   { label: "What we learned", detail: "Evidence and themes organised in the Capability Commons.", href: "/commons" },
   { label: "What we built", detail: "Ideas advanced into working prototypes in the lab.", href: "/prototypes" },
-  { label: "What we recommend", detail: "Practical recommendations for the relevant Union Ministry.", href: "/outcomes" },
+  { label: "What we recommend", detail: "Documentation and working prototypes, handed to the decision makers of every stakeholder group on Republic Day.", href: "/outcomes" },
 ];
 
 export function OutcomePipeline() {

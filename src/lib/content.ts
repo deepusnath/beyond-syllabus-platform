@@ -70,11 +70,11 @@ export type LiveStatus =
 
 /**
  * Clock-driven live state with a manual override (site.live.forceLive).
- * The December stage is a publication window, not a broadcast, so it is
- * excluded from "live" detection.
+ * Every stage now has a concrete broadcast window, including the Dec 10
+ * Global Action Network update and the Jan 26 handover.
  */
 export function getLiveStatus(now: Date = new Date()): LiveStatus {
-  const broadcastEvents = events.filter((e) => e.stage !== "act");
+  const broadcastEvents = events;
   const t = now.getTime();
 
   const liveEvent = broadcastEvents.find(

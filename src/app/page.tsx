@@ -34,10 +34,10 @@ function eventSeriesJsonLd() {
     "@type": "EventSeries",
     name: "Beyond Syllabus — Bridge The Gap 4.0",
     description:
-      "A four-month stakeholder initiative to redesign education for the next generation, ending in recommendations and working prototypes.",
+      "A five-month stakeholder initiative to redesign education for the next generation, ending in recommendations and working prototypes handed to decision makers.",
     organizer: { "@type": "Organization", name: "The Purple Movement" },
     startDate: "2026-08-15",
-    endDate: "2026-12-31",
+    endDate: "2027-01-26",
     eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
   };
 }
@@ -60,7 +60,7 @@ export default function HomePage() {
         <SectionHeading
           kicker="This is not a conference"
           title="A public process, documented in the open"
-          lede="Beyond Syllabus is a structured series of stakeholder conversations running from August to December 2026. Every conversation leaves evidence. Evidence becomes ideas, ideas become prototypes, and prototypes become recommendations submitted to the relevant Union Ministry."
+          lede="Beyond Syllabus is a structured series of stakeholder conversations running from August 2026 to Republic Day 2027. Every conversation leaves evidence. Evidence becomes ideas, ideas become prototypes — and on January 26, the documentation and working prototypes are handed to the decision makers of every stakeholder group."
         />
         <div className="mt-14 grid gap-px bg-ink sm:grid-cols-3">
           {pillars.map((p, i) => (
@@ -76,9 +76,9 @@ export default function HomePage() {
       <section className="border-y border-purple-line bg-purple-soft/40">
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
           <SectionHeading
-            kicker="The journey · Aug — Dec 2026"
-            title="Listen. Question. Connect. Build. Act."
-            lede="Five stages, each adding a stakeholder group and carrying forward everything gathered before it."
+            kicker="The journey · Aug 2026 — Jan 2027"
+            title="Listen. Question. Connect. Build. Act. Deliver."
+            lede="Six stages, each adding a stakeholder group and carrying forward everything gathered before it — ending in a handover on Republic Day."
           />
           <JourneyTimeline />
           <CtaLink href="/journey" tone="ink" className="mt-6">
@@ -148,8 +148,8 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
         <SectionHeading
           kicker="Where it all lands"
-          title="December 2026"
-          lede="The four months converge into one public record: evidence, recommendations and working prototypes."
+          title="The handover"
+          lede="On Human Rights Day (Dec 10) the Global Action Network hears what was built. On Republic Day (Jan 26) the documentation and working prototypes pass into the hands of the decision makers of every stakeholder group."
         />
         <OutcomePipeline />
         <p className="mt-8">

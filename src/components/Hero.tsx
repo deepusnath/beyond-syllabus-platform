@@ -30,7 +30,7 @@ export function Hero() {
         </h1>
 
         <p className="mt-8 max-w-md text-xl font-medium leading-snug text-ink sm:text-2xl">
-          A four-month journey to redesign education for the next generation.
+          A five-month journey to redesign education for the next generation.
         </p>
 
         <DateStrip linked className="mt-8 block" />

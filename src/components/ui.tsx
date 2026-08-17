@@ -100,7 +100,7 @@ export function CtaLink({
 
 /** The recurring date strip: AUG 15 → SEP 05 → OCT 02 → NOV 14 → DEC */
 export function DateStrip({ className, linked = false }: { className?: string; linked?: boolean }) {
-  const dates = ["AUG 15", "SEP 05", "OCT 02", "NOV 14", "DEC"];
+  const dates = ["AUG 15", "SEP 05", "OCT 02", "NOV 14", "DEC 10", "JAN 26"];
   const strip = (
     <span className="condensed inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold tracking-[0.18em]">
       {dates.map((d, i) => (

@@ -10,6 +10,7 @@ const stageVerbs: Record<string, string> = {
   connect: "Connect",
   build: "Build",
   act: "Act",
+  deliver: "Deliver",
 };
 
 /*
@@ -57,13 +58,13 @@ export function JourneyTimeline({ detailed = false }: { detailed?: boolean }) {
                 )}
                 {event.format === "in-person" && (
                   <Chip tone="mint" className="mt-4">
-                    In person · {event.location}
+                    In person{event.location ? ` · ${event.location}` : ""}
                   </Chip>
                 )}
                 {detailed && (
                   <p className="mt-5 max-w-xl leading-relaxed text-ink-soft">{event.description}</p>
                 )}
-                {detailed && event.stage === "act" && (
+                {detailed && event.stage === "deliver" && (
                   <Link
                     href="/outcomes"
                     className="condensed mt-5 inline-block text-sm font-semibold tracking-[0.14em] text-purple-deep underline-offset-4 hover:underline"

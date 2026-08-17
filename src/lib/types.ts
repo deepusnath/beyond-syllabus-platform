@@ -18,7 +18,7 @@ export type StakeholderGroup =
   | "community"
   | "global";
 
-export type EventStage = "listen" | "question" | "connect" | "build" | "act";
+export type EventStage = "listen" | "question" | "connect" | "build" | "act" | "deliver";
 
 export interface Event {
   id: string;
