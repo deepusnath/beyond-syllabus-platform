@@ -2,6 +2,9 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { Speaker, StakeholderGroup } from "@/lib/types";
 import { getSessions } from "@/lib/content";
+import { CONTENT_REPO, contentToken } from "@/lib/github-content";
+import { isStakeholderGroup } from "@/lib/stakeholders";
+import { slugify } from "@/lib/util";
 
 /*
  * Shared server-side logic for the organiser Voices API: reading the
@@ -13,15 +16,12 @@ import { getSessions } from "@/lib/content";
  * other.
  */
 
-const OWNER = "deepusnath";
-const REPO = "beyond-syllabus-platform";
-const BRANCH = "main";
-
 export async function getAuthoritativeSpeakers(): Promise<Speaker[]> {
-  const token = process.env.GITHUB_CONTENT_TOKEN;
+  const token = contentToken();
   if (token) {
+    const { owner, repo, branch } = CONTENT_REPO;
     const res = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/contents/content/speakers.json?ref=${BRANCH}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/content/speakers.json?ref=${branch}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -36,26 +36,6 @@ export async function getAuthoritativeSpeakers(): Promise<Speaker[]> {
   }
   const raw = await readFile(path.join(process.cwd(), "content/speakers.json"), "utf-8");
   return JSON.parse(raw) as Speaker[];
-}
-
-const groups: StakeholderGroup[] = [
-  "students",
-  "educators",
-  "researchers",
-  "industry",
-  "policymakers",
-  "community",
-  "global",
-];
-
-export function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60);
 }
 
 export interface SpeakerInput {
@@ -82,8 +62,9 @@ export function parseSpeakerInput(form: FormData): SpeakerInput {
   if (!/^[a-z0-9-]+$/.test(slugRaw)) {
     throw new Error("Slug may only contain lowercase letters, numbers and hyphens.");
   }
-  const category = text("category", 20) as StakeholderGroup;
-  if (!groups.includes(category)) throw new Error("Unknown stakeholder category.");
+  const categoryRaw = text("category", 20);
+  if (!isStakeholderGroup(categoryRaw)) throw new Error("Unknown stakeholder category.");
+  const category: StakeholderGroup = categoryRaw;
 
   const sessionId = text("sessionId", 40);
   if (!getSessions().some((s) => s.id === sessionId)) throw new Error("Unknown session.");

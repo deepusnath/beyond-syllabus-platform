@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { present } from "@/lib/util";
 import {
   getConversation,
   getIdea,
@@ -9,7 +10,7 @@ import {
   getTopics,
   getEvent,
 } from "@/lib/content";
-import { Kicker, SampleBadge } from "@/components/ui";
+import { BackLink, Kicker, SampleBadge } from "@/components/ui";
 import { IdeaCard, PrototypeCard } from "@/components/cards";
 
 export function generateStaticParams() {
@@ -32,24 +33,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const topic = getTopic(slug);
   if (!topic) notFound();
 
-  const conversations = topic.conversationSlugs
-    .map((c) => getConversation(c))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c));
-  const ideas = topic.ideaSlugs
-    .map((i) => getIdea(i))
-    .filter((i): i is NonNullable<typeof i> => Boolean(i));
-  const prototypes = topic.prototypeSlugs
-    .map((p) => getPrototype(p))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const conversations = present(topic.conversationSlugs.map(getConversation));
+  const ideas = present(topic.ideaSlugs.map(getIdea));
+  const prototypes = present(topic.prototypeSlugs.map(getPrototype));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-      <Link
-        href="/commons"
-        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-      >
-        ← All themes
-      </Link>
+      <BackLink href="/commons" label="All themes" className="mb-8" />
       <Kicker>Capability Commons</Kicker>
       <h1 className="display mt-4 text-6xl sm:text-8xl">{topic.title}</h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">{topic.description}</p>
@@ -116,12 +106,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       <p className="mt-16 border-t-2 border-ink pt-8">
-        <Link
-          href="/commons"
-          className="condensed text-sm font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-        >
-          ← All themes
-        </Link>
+        <BackLink href="/commons" label="All themes" />
       </p>
     </div>
   );

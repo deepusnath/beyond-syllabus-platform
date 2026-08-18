@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getLiveStatus, type LiveStatus } from "@/lib/content";
+import { getLiveStatus, type LiveStatus } from "@/lib/live";
 
 /*
  * Client-side live status, recomputed every 30s so the LIVE state flips

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { present } from "@/lib/util";
 import {
   getConversation,
   getEvent,
@@ -9,7 +10,7 @@ import {
   getSpeakers,
   stakeholderLabels,
 } from "@/lib/content";
-import { Kicker, SampleBadge, Chip } from "@/components/ui";
+import { BackLink, Kicker, SampleBadge, Chip } from "@/components/ui";
 
 export function generateStaticParams() {
   return getSpeakers().map((s) => ({ slug: s.slug }));
@@ -35,18 +36,11 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
   if (!speaker) notFound();
 
   const sessions = getSessions().filter((s) => speaker.sessionIds.includes(s.id));
-  const conversations = speaker.conversationSlugs
-    .map((c) => getConversation(c))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+  const conversations = present(speaker.conversationSlugs.map(getConversation));
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-      <Link
-        href="/voices"
-        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-      >
-        ← All voices
-      </Link>
+      <BackLink href="/voices" label="All voices" className="mb-8" />
       {speaker.sample && <SampleBadge className="mb-6" />}
       <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -149,12 +143,7 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
         </aside>
       </div>
       <p className="mt-16 border-t-2 border-ink pt-8">
-        <Link
-          href="/voices"
-          className="condensed text-sm font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-        >
-          ← All voices
-        </Link>
+        <BackLink href="/voices" label="All voices" />
       </p>
     </article>
   );

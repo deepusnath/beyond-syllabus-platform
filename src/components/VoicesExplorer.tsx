@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { getSpeakers, stakeholderLabels } from "@/lib/content";
+import { speakers } from "@/lib/speakers-store";
+import { stakeholderLabels } from "@/lib/stakeholders";
 import type { StakeholderGroup } from "@/lib/types";
 import { VoiceCard } from "@/components/cards";
 
@@ -18,7 +19,7 @@ const filters: (StakeholderGroup | "all")[] = [
 
 export function VoicesExplorer() {
   const [active, setActive] = useState<StakeholderGroup | "all">("all");
-  const speakers = getSpeakers()
+  const visible = speakers
     .filter((s) => active === "all" || s.category === active)
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -42,13 +43,13 @@ export function VoicesExplorer() {
         ))}
       </div>
 
-      {speakers.length === 0 ? (
+      {visible.length === 0 ? (
         <p className="mt-12 max-w-xl text-ink-soft">
           No voices announced in this group yet — they will appear here as sessions are confirmed.
         </p>
       ) : (
         <ul className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {speakers.map((s) => (
+          {visible.map((s) => (
             <li key={s.slug}>
               <VoiceCard speaker={s} />
             </li>

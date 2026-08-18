@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { present } from "@/lib/util";
 import {
   getConversation,
   getConversations,
@@ -9,7 +10,7 @@ import {
   getTopic,
   stakeholderLabels,
 } from "@/lib/content";
-import { Chip, SampleBadge } from "@/components/ui";
+import { BackLink, Chip, SampleBadge } from "@/components/ui";
 
 export function generateStaticParams() {
   return getConversations().map((c) => ({ slug: c.slug }));
@@ -52,21 +53,12 @@ export default async function ConversationPage({
   if (!conversation) notFound();
 
   const event = getEvent(conversation.eventId);
-  const participants = conversation.participantSlugs
-    .map((s) => getSpeaker(s))
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
-  const topics = conversation.topicSlugs
-    .map((t) => getTopic(t))
-    .filter((t): t is NonNullable<typeof t> => Boolean(t));
+  const participants = present(conversation.participantSlugs.map(getSpeaker));
+  const topics = present(conversation.topicSlugs.map(getTopic));
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-      <Link
-        href="/conversations"
-        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-      >
-        ← All conversations
-      </Link>
+      <BackLink href="/conversations" label="All conversations" className="mb-8" />
       <div className="flex flex-wrap items-center gap-3">
         <Chip tone="purple">{event?.dateLabel}</Chip>
         <p className="condensed text-sm font-semibold tracking-[0.16em] text-ink-soft">

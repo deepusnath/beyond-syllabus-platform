@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { events } from "@/data/events";
 
 /** Small condensed uppercase label with a leading purple tick — poster kickers. */
 export function Kicker({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -98,9 +99,21 @@ export function CtaLink({
   );
 }
 
-/** The recurring date strip: AUG 15 → SEP 05 → OCT 02 → NOV 14 → DEC */
+/** Consistent detail-page back navigation: "← {label}" in the house style. */
+export function BackLink({ href, label, className }: { href: string; label: string; className?: string }) {
+  return (
+    <Link
+      href={href}
+      className={`condensed inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline ${className ?? ""}`}
+    >
+      ← {label}
+    </Link>
+  );
+}
+
+/** The recurring journey date strip — derived from the events data, never hand-maintained. */
 export function DateStrip({ className, linked = false }: { className?: string; linked?: boolean }) {
-  const dates = ["AUG 15", "SEP 05", "OCT 02", "NOV 14", "DEC 10", "JAN 26"];
+  const dates = events.map((e) => e.dateLabel);
   const strip = (
     <span className="condensed inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold tracking-[0.18em]">
       {dates.map((d, i) => (

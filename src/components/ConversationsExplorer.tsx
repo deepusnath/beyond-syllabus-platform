@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { getConversations, getEvents, getTopics, stakeholderLabels } from "@/lib/content";
+import { getConversations, getEvents, getTopics } from "@/lib/content";
+import { stakeholderLabels } from "@/lib/stakeholders";
 import type { StakeholderGroup } from "@/lib/types";
 import { ConversationCard } from "@/components/cards";
 

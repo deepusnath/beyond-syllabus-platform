@@ -120,7 +120,9 @@ export function PosterGenerator({ speaker }: { speaker: Speaker }) {
   }, [speaker]);
 
   useEffect(() => {
-    void draw();
+    // Deferred a tick so all draw-state updates happen asynchronously.
+    const id = setTimeout(() => void draw(), 0);
+    return () => clearTimeout(id);
   }, [draw]);
 
   function download() {

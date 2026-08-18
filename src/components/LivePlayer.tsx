@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { getSessionsForEvent, getSite, getSpeaker } from "@/lib/content";
+import { getSessionsForEvent, getSite } from "@/lib/live";
+import { getSpeaker } from "@/lib/speakers-store";
 import type { Event, Session } from "@/lib/types";
 import { Chip, SampleBadge } from "@/components/ui";
 import { useLiveStatus } from "@/components/useLiveStatus";

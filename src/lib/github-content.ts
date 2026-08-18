@@ -11,9 +11,14 @@ import path from "node:path";
  * tree directly, so the whole flow is testable offline.
  */
 
-const OWNER = "deepusnath";
-const REPO = "beyond-syllabus-platform";
-const BRANCH = "main";
+/** Single source for the content repo coordinates — reused by every reader/writer. */
+export const CONTENT_REPO = {
+  owner: "deepusnath",
+  repo: "beyond-syllabus-platform",
+  branch: "main",
+} as const;
+
+const { owner: OWNER, repo: REPO, branch: BRANCH } = CONTENT_REPO;
 
 export interface FileChange {
   /** Repo-relative path, e.g. "content/speakers.json". */
@@ -22,9 +27,10 @@ export interface FileChange {
   content: string | Buffer | null;
 }
 
-function token(): string | undefined {
+export function contentToken(): string | undefined {
   return process.env.GITHUB_CONTENT_TOKEN;
 }
+const token = contentToken;
 
 async function gh(pathname: string, init?: RequestInit): Promise<Record<string, unknown>> {
   const res = await fetch(`https://api.github.com${pathname}`, {

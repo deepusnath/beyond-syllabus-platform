@@ -1,3 +1,4 @@
+import { ringPoints } from "@/lib/util";
 /*
  * The poster's dominant graphic: a thick purple ribbon that enters from
  * the top edge, sweeps into the Purple Movement "P" loop, and drops its
@@ -5,12 +6,7 @@
  * the loop's counter. Purely decorative (aria-hidden).
  */
 export function PosterMotif({ className }: { className?: string }) {
-  const dots = 24;
-  // Fixed precision keeps server and client renders byte-identical (hydration).
-  const ring = Array.from({ length: dots }, (_, i) => {
-    const a = (i / dots) * Math.PI * 2;
-    return { x: (340 + 100 * Math.cos(a)).toFixed(2), y: (630 + 100 * Math.sin(a)).toFixed(2) };
-  });
+  const ring = ringPoints(24, 340, 630, 100);
   return (
     <svg viewBox="0 0 640 1000" fill="none" aria-hidden="true" className={className}>
       <defs>
@@ -50,11 +46,7 @@ export function DottedRing({
   className?: string;
   dots?: number;
 }) {
-  // Fixed precision keeps server and client renders byte-identical (hydration).
-  const points = Array.from({ length: dots }, (_, i) => {
-    const a = (i / dots) * Math.PI * 2;
-    return { x: (50 + 42 * Math.cos(a)).toFixed(2), y: (50 + 42 * Math.sin(a)).toFixed(2) };
-  });
+  const points = ringPoints(dots, 50, 50, 42);
   return (
     <svg viewBox="0 0 100 100" aria-hidden="true" className={`${className ?? ""} animate-spin-slowest`}>
       {points.map((p, i) => (

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getConversation, getIdea, getPrototype, getPrototypes, getTopic } from "@/lib/content";
-import { Chip, Kicker, SampleBadge } from "@/components/ui";
+import { present } from "@/lib/util";
+import { BackLink, Chip, Kicker, SampleBadge } from "@/components/ui";
 import { IdeaStatusTrack } from "@/components/cards";
 
 export function generateStaticParams() {
@@ -34,21 +35,12 @@ export default async function PrototypePage({ params }: { params: Promise<{ slug
   if (!prototype) notFound();
 
   const idea = prototype.ideaSlug ? getIdea(prototype.ideaSlug) : undefined;
-  const conversations = prototype.conversationSlugs
-    .map((c) => getConversation(c))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c));
-  const topics = prototype.topicSlugs
-    .map((t) => getTopic(t))
-    .filter((t): t is NonNullable<typeof t> => Boolean(t));
+  const conversations = present(prototype.conversationSlugs.map(getConversation));
+  const topics = present(prototype.topicSlugs.map(getTopic));
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-      <Link
-        href="/prototypes"
-        className="condensed mb-8 inline-block text-xs font-semibold tracking-[0.16em] text-purple-deep underline-offset-4 hover:underline"
-      >
-        ← Prototype lab
-      </Link>
+      <BackLink href="/prototypes" label="Prototype lab" className="mb-8" />
       <div className="flex flex-wrap items-center gap-3">
         <Chip tone="mint">{statusLabels[prototype.status]}</Chip>
         {prototype.sample && <SampleBadge />}

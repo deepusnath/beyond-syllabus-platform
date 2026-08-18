@@ -1,5 +1,6 @@
 import speakersJson from "../../content/speakers.json";
-import type { Speaker, StakeholderGroup } from "@/lib/types";
+import type { Speaker } from "@/lib/types";
+import { isStakeholderGroup } from "@/lib/stakeholders";
 
 /*
  * Speaker records live in content/speakers.json so the admin write path
@@ -8,16 +9,6 @@ import type { Speaker, StakeholderGroup } from "@/lib/types";
  * loudly — a malformed file must break the build, never silently drop
  * a person.
  */
-
-const groups: StakeholderGroup[] = [
-  "students",
-  "educators",
-  "researchers",
-  "industry",
-  "policymakers",
-  "community",
-  "global",
-];
 
 function fail(index: number, message: string): never {
   throw new Error(`content/speakers.json entry ${index}: ${message}`);
@@ -33,7 +24,7 @@ function validateSpeaker(raw: unknown, index: number): Speaker {
     }
   }
   if (!/^[a-z0-9-]+$/.test(s.slug as string)) fail(index, `invalid slug "${s.slug}"`);
-  if (!groups.includes(s.category as StakeholderGroup)) {
+  if (!isStakeholderGroup(s.category)) {
     fail(index, `unknown category "${s.category}"`);
   }
   for (const field of ["bio", "keyIdea", "photo", "videoTimestampUrl"] as const) {
@@ -64,3 +55,6 @@ function load(): Speaker[] {
 }
 
 export const speakers: Speaker[] = load();
+
+export const getSpeaker = (slug: string): Speaker | undefined =>
+  speakers.find((s) => s.slug === slug);

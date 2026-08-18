@@ -145,7 +145,14 @@ export function VoiceCard({ speaker }: { speaker: Speaker }) {
       >
         {speaker.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={speaker.photo} alt="" className="h-full w-full object-cover" />
+          <img
+            src={speaker.photo}
+            alt=""
+            width={660}
+            height={660}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
         ) : (
           <span aria-hidden className="display text-6xl text-purple-line">
             {speaker.name.charAt(0)}

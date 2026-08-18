@@ -1,4 +1,5 @@
 import sharp from "sharp";
+import { ringPoints } from "@/lib/util";
 
 /*
  * Renders an uploaded photo into the Voices headshot template so every
@@ -28,16 +29,9 @@ const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
 
 function frameSvg(): string {
   const c = FRAME_SIZE / 2;
-  const dots: string[] = [];
-  const dotCount = 72;
-  for (let i = 0; i < dotCount; i++) {
-    const a = (i / dotCount) * Math.PI * 2;
-    dots.push(
-      `<circle cx="${(c + DOTS_RADIUS * Math.cos(a)).toFixed(1)}" cy="${(
-        c + DOTS_RADIUS * Math.sin(a)
-      ).toFixed(1)}" r="5" fill="#ffffff"/>`,
-    );
-  }
+  const dots = ringPoints(72, c, c, DOTS_RADIUS).map(
+    (p) => `<circle cx="${p.x}" cy="${p.y}" r="5" fill="#ffffff"/>`,
+  );
   return `<svg width="${FRAME_SIZE}" height="${FRAME_SIZE}" viewBox="0 0 ${FRAME_SIZE} ${FRAME_SIZE}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="${FRAME_SIZE}" y2="${FRAME_SIZE}" gradientUnits="userSpaceOnUse">

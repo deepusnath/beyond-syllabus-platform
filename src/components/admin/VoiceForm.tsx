@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Session, Speaker } from "@/lib/types";
-import { stakeholderLabels } from "@/lib/content";
+import { stakeholderLabels } from "@/lib/stakeholders";
+import { ringPoints, slugify } from "@/lib/util";
 
 /*
  * Organiser form for adding/editing a voice, with an in-browser circular
@@ -23,12 +24,7 @@ export function VoiceForm({ sessions, existing }: Props) {
   const [name, setName] = useState(existing?.name ?? "");
   const [slugManual, setSlugManual] = useState<string | null>(existing?.slug ?? null);
   // Slug follows the name until the organiser edits it directly.
-  const slug =
-    slugManual ??
-    name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+  const slug = slugManual ?? slugify(name);
   const [role, setRole] = useState(existing?.role ?? "");
   const [organisation, setOrganisation] = useState(existing?.organisation ?? "");
   const [category, setCategory] = useState(existing?.category ?? "students");
@@ -52,12 +48,11 @@ export function VoiceForm({ sessions, existing }: Props) {
   // After a GitHub publish, the change is only live once the automatic
   // deploy finishes (~1 min). Poll the public page so the "view" button
   // never leads to a 404.
+  // Local-mode publishes are live immediately; only GitHub publishes wait
+  // on the deploy. Derived at render time to keep the effect async-only.
+  const isLive = done ? done.mode !== "github" || deployed : false;
   useEffect(() => {
-    if (!done) return;
-    if (done.mode !== "github") {
-      setDeployed(true);
-      return;
-    }
+    if (!done || done.mode !== "github") return;
     let cancelled = false;
     const check = async () => {
       try {
@@ -186,16 +181,16 @@ export function VoiceForm({ sessions, existing }: Props) {
   if (done) {
     return (
       <div role="status" className="border-l-4 border-mint bg-purple-soft/50 p-6">
-        <p className="display text-3xl">{deployed ? "Published — live." : "Published."}</p>
+        <p className="display text-3xl">{isLive ? "Published — live." : "Published."}</p>
         <p className="mt-3 text-sm text-ink-soft">
           {done.mode !== "github"
             ? "Written to the local working tree (development mode)."
-            : deployed
+            : isLive
               ? "The deploy has finished — the profile is live on the public site."
               : "The change is committed. The automatic deploy is running — this usually takes about a minute, and the button below unlocks the moment the page is live."}
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-4">
-          {deployed ? (
+          {isLive ? (
             <Link href={`/voices/${done.slug}`} className="condensed bg-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] text-paper hover:bg-purple-deep">
               View the profile →
             </Link>
@@ -305,13 +300,9 @@ export function VoiceForm({ sessions, existing }: Props) {
           >
             {/* dotted arc */}
             <svg viewBox="0 0 330 330" className="pointer-events-none absolute inset-0" aria-hidden>
-              {Array.from({ length: 72 }, (_, i) => {
-                const a = (i / 72) * Math.PI * 2;
-                // Fixed precision keeps server and client renders byte-identical.
-                const cx = (165 + 168 * Math.cos(a)).toFixed(2);
-                const cy = (165 + 168 * Math.sin(a)).toFixed(2);
-                return <circle key={i} cx={cx} cy={cy} r={2.5} fill="#fff" />;
-              })}
+              {ringPoints(72, 165, 165, 168).map((p, i) => (
+                <circle key={i} cx={p.x} cy={p.y} r={2.5} fill="#fff" />
+              ))}
             </svg>
             {/* white ring */}
             <div
