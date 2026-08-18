@@ -19,6 +19,14 @@ export const QUESTIONS = [
   "What are the top 3 priorities academia should start working on today?",
 ] as const;
 
+/* Example answers shown as placeholders for priming. Tab in an empty box
+ * adopts the example as an editable starting point. */
+const EXAMPLES = [
+  "Move from syllabus completion to capability building: strengthen fundamentals, enable exploration beyond the syllabus, use flipped classrooms and peer-learning communities, connect learning to real-world problems, and recognise proof of work alongside examinations.",
+  "Short term: Give students more autonomy, relax rigid attendance requirements, integrate responsible AI, activate peer-learning communities, and bring industry and real-world projects into campuses.\nLong term: Redesign curriculum, assessment, faculty roles, accreditation, and institutional structures around capabilities rather than content and credentials.",
+  "1. Rethink assessment from testing memory to demonstrating capability.\n2. Transform classrooms from passive teaching to active, peer-led, experiential learning.\n3. Give students agency to explore, build, collaborate, and create verifiable proof of work beyond the syllabus.",
+] as const;
+
 const BADGE = 1080;
 
 function drawBadge(canvas: HTMLCanvasElement, name: string) {
@@ -215,10 +223,22 @@ export function JoinTheConversation() {
               onChange={(e) =>
                 setAnswers((prev) => prev.map((a, j) => (j === i ? e.target.value : a)))
               }
-              rows={3}
+              onKeyDown={(e) => {
+                // Tab in an empty box adopts the example for editing.
+                if (e.key === "Tab" && !answers[i].trim()) {
+                  e.preventDefault();
+                  setAnswers((prev) => prev.map((a, j) => (j === i ? EXAMPLES[i] : a)));
+                }
+              }}
+              placeholder={EXAMPLES[i]}
+              rows={4}
               maxLength={2000}
-              className={input}
+              className={`${input} placeholder:text-ink-soft/50`}
             />
+            <span className="mt-1 block text-xs text-ink-soft/70">
+              The shaded text is an example. Press Tab to start from it and make it yours, or just
+              type your own.
+            </span>
           </label>
         ))}
       </div>
