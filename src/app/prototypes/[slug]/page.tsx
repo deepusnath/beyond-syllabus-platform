@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = getPrototype(slug);
   if (!p) return {};
-  return { title: `${p.title} — Prototype Lab`, description: p.hypothesis.slice(0, 160) };
+  return { title: `${p.title} · Prototype Lab`, description: p.hypothesis.slice(0, 160) };
 }
 
 const statusLabels = {

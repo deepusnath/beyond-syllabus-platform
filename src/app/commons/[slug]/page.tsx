@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const topic = getTopic(slug);
   if (!topic) return {};
-  return { title: `${topic.title} — Capability Commons`, description: topic.description };
+  return { title: `${topic.title} · Capability Commons`, description: topic.description };
 }
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {

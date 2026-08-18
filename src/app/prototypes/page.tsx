@@ -6,7 +6,7 @@ import { PrototypeCard } from "@/components/cards";
 export const metadata: Metadata = {
   title: "Prototype Lab",
   description:
-    "From protest to prototype — the solutions being developed during Beyond Syllabus, documented in public: problem, hypothesis, build, evidence, results.",
+    "From protest to prototype: the solutions being developed during Beyond Syllabus, documented in public: problem, hypothesis, build, evidence, results.",
 };
 
 export default function PrototypesPage() {
@@ -17,7 +17,7 @@ export default function PrototypesPage() {
       <SectionHeading
         kicker="The prototype lab"
         title="From protest to prototype"
-        lede="Talking about broken systems is easy. Building alternatives is harder. This is where solutions developed during the initiative are documented — problem, hypothesis, build, evidence and results, in public. The first real prototypes are selected at the November convergence; the worked example below (marked as illustrative) shows the documentation each one will carry."
+        lede="Talking about broken systems is easy. Building alternatives is harder. This is where solutions developed during the initiative are documented in public: problem, hypothesis, build, evidence and results. The first real prototypes are selected at the November convergence; the worked example below (marked as illustrative) shows the documentation each one will carry."
       />
       <div className="mt-14 grid gap-8 md:grid-cols-2">
         {prototypes.map((p) => (
@@ -26,7 +26,7 @@ export default function PrototypesPage() {
       </div>
       <div className="mt-14 border-t-2 border-ink pt-10">
         <p className="max-w-xl text-lg text-ink">
-          Prototypes grow out of the idea pipeline after the November convergence — and any team
+          Prototypes grow out of the idea pipeline after the November convergence, and any team
           can propose one.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">

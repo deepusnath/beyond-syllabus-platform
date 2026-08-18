@@ -18,7 +18,7 @@ export const topics: Topic[] = [
   {
     slug: "assessment",
     title: "Assessment",
-    description: "How learning is measured — and how measurement shapes learning.",
+    description: "How learning is measured, and how measurement shapes learning.",
     conversationSlugs: ["what-needs-to-change", "what-should-education-become"],
     ideaSlugs: ["portfolio-assessment"],
     prototypeSlugs: ["portfolio-pilot"],
@@ -66,14 +66,14 @@ export const topics: Topic[] = [
     quotes: [
       {
         text: "What can I understand, build, solve, and contribute?",
-        attribution: "The question education should teach us to ask — Deepu S Nath, “The Fishbowl Is Not the Future”",
+        attribution: "The question education should teach us to ask. Deepu S Nath, “The Fishbowl Is Not the Future”",
       },
     ],
   },
   {
     slug: "skills",
     title: "Skills",
-    description: "Capabilities the future demands — named, practised, and evidenced.",
+    description: "Capabilities the future demands: named, practised, and evidenced.",
     conversationSlugs: ["capabilities-the-future-demands"],
     ideaSlugs: [],
     prototypeSlugs: [],

@@ -38,7 +38,7 @@ export function buildSearchIndex(): SearchRecord[] {
   for (const e of getEvents()) {
     records.push({
       type: "event",
-      title: `${e.dateLabel} — ${e.title}`,
+      title: `${e.dateLabel} · ${e.title}`,
       href: "/journey",
       snippet: e.description,
       text: [e.title, e.audience, e.question, e.description].join(" ").toLowerCase(),

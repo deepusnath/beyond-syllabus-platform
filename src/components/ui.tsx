@@ -42,7 +42,7 @@ export function SampleBadge({ className }: { className?: string }) {
   return (
     <span
       className={`condensed inline-flex items-center rounded-chip border border-dashed border-ink-soft/60 px-2 py-0.5 text-[0.65rem] font-medium tracking-[0.15em] text-ink-soft ${className ?? ""}`}
-      title="A worked example showing what will appear here — replaced by real records as the journey produces them."
+      title="A worked example showing what will appear here. Real records replace it as the journey produces them."
     >
       Illustrative example
     </span>

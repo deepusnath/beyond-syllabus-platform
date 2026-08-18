@@ -174,20 +174,20 @@ export function VoiceForm({ sessions, existing }: Props) {
     if (res.ok && data?.ok) {
       setDone({ slug: data.slug ?? existing?.slug ?? slug, mode: data.mode ?? "github" });
     } else {
-      setError(data?.error ?? "Something went wrong — try again.");
+      setError(data?.error ?? "Something went wrong. Try again.");
     }
   }
 
   if (done) {
     return (
       <div role="status" className="border-l-4 border-mint bg-purple-soft/50 p-6">
-        <p className="display text-3xl">{isLive ? "Published — live." : "Published."}</p>
+        <p className="display text-3xl">{isLive ? "Published and live." : "Published."}</p>
         <p className="mt-3 text-sm text-ink-soft">
           {done.mode !== "github"
             ? "Written to the local working tree (development mode)."
             : isLive
-              ? "The deploy has finished — the profile is live on the public site."
-              : "The change is committed. The automatic deploy is running — this usually takes about a minute, and the button below unlocks the moment the page is live."}
+              ? "The deploy has finished. The profile is live on the public site."
+              : "The change is committed. The automatic deploy is running. It usually takes about a minute, and the button below unlocks the moment the page is live."}
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-4">
           {isLive ? (
@@ -229,7 +229,7 @@ export function VoiceForm({ sessions, existing }: Props) {
           />
           {existing && (
             <span className="mt-1 block text-xs text-ink-soft">
-              The address can&apos;t change after publishing — links to it may already exist.
+              The address can&apos;t change after publishing, because links to it may already exist.
             </span>
           )}
         </label>
@@ -262,7 +262,7 @@ export function VoiceForm({ sessions, existing }: Props) {
           </label>
         </div>
         <label className="block">
-          <span className="kicker">Key idea (optional — their one-line contribution)</span>
+          <span className="kicker">Key idea (optional: their one-line contribution)</span>
           <input value={keyIdea} onChange={(e) => setKeyIdea(e.target.value)} maxLength={200} className={input} />
         </label>
         <label className="block">
@@ -322,7 +322,7 @@ export function VoiceForm({ sessions, existing }: Props) {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={imgUrl}
-                  alt="Crop preview — drag to position"
+                  alt="Crop preview. Drag to position."
                   draggable={false}
                   style={{
                     position: "absolute",
@@ -359,7 +359,7 @@ export function VoiceForm({ sessions, existing }: Props) {
           )}
           <p className="text-xs leading-relaxed text-ink-soft">
             Drag to position, zoom to frame the face. What you see in the ring is exactly how the
-            published headshot will look{existing ? " — leave the photo untouched to keep the current one" : ""}.
+            published headshot will look{existing ? ". Leave the photo untouched to keep the current one" : ""}.
           </p>
         </div>
       </div>

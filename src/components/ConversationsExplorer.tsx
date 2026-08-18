@@ -58,7 +58,7 @@ export function ConversationsExplorer() {
           <select value={eventId} onChange={(e) => setEventId(e.target.value)} className={selectClass}>
             <option value="all">All events</option>
             {getEvents().map((e) => (
-              <option key={e.id} value={e.id}>{e.dateLabel} — {e.title}</option>
+              <option key={e.id} value={e.id}>{e.dateLabel} · {e.title}</option>
             ))}
           </select>
         </label>

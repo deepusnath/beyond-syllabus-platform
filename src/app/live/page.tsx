@@ -6,7 +6,7 @@ import { Kicker } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Live",
   description:
-    "Watch Beyond Syllabus live — every conversation is streamed in public. When nothing is live, the latest broadcast and full schedule are here.",
+    "Watch Beyond Syllabus live. Every conversation is streamed in public. When nothing is live, the latest broadcast and full schedule are here.",
 };
 
 export default function LivePage() {
@@ -16,7 +16,7 @@ export default function LivePage() {
         Live<span className="text-purple">.</span>
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-        Every Beyond Syllabus conversation happens in public. Watch here, live — or catch the
+        Every Beyond Syllabus conversation happens in public. Watch here live, or catch the
         latest broadcast when nothing is on air.
       </p>
 
@@ -26,7 +26,7 @@ export default function LivePage() {
           <div className="border-2 border-ink p-6">
             <Kicker>Context</Kicker>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Beyond Syllabus is a six-month journey — six stages, each adding a stakeholder
+              Beyond Syllabus is a six-month journey: six stages, each adding a stakeholder
               group. What is said on this stream becomes part of the public record.
             </p>
             <Link

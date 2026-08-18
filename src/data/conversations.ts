@@ -32,7 +32,7 @@ export const conversations: Conversation[] = [
     topicSlugs: ["student-agency", "assessment", "curriculum", "learning-communities"],
     videoUrl: "https://www.youtube.com/embed/qXdBTk5XFsE",
     summary:
-      "The opening conversation of Beyond Syllabus, streamed live on August 15. Fifteen voices from student communities, campus chapters and learning collectives put the generation's own experience of the education system on the record — the full recording is above. The written documentation of this session — summary, key questions, areas of agreement and disagreement, and proposed solutions — is being prepared and will be published on this page.",
+      "The opening conversation of Beyond Syllabus, streamed live on August 15. Fifteen voices from student communities, campus chapters and learning collectives put the generation's own experience of the education system on the record. The full recording is above. The written documentation of this session (summary, key questions, areas of agreement and disagreement, and proposed solutions) is being prepared and will be published on this page.",
     transcriptStatus: "in-progress",
     keyQuestions: ["What needs to change?"],
     observations: [],
@@ -63,7 +63,7 @@ export const conversations: Conversation[] = [
     stakeholders: ["educators", "researchers", "policymakers"],
     topicSlugs: ["teacher-development", "assessment", "higher-education", "policy"],
     summary:
-      "On September 5, academics, researchers and policymakers join the journey — responding to what students put on the record in the opening session, and moving the conversation from diagnosis to design. Once the session ends, this page becomes its permanent record: the recording, a written summary, the transcript, the questions asked, where the room agreed, where it disagreed, and what it proposed.",
+      "On September 5, academics, researchers and policymakers join the journey, responding to what students put on the record in the opening session and moving the conversation from diagnosis to design. Once the session ends, this page becomes its permanent record: the recording, a written summary, the transcript, the questions asked, where the room agreed, where it disagreed, and what it proposed.",
     transcriptStatus: "pending",
     keyQuestions: ["What should education become?"],
     observations: [],
@@ -73,7 +73,7 @@ export const conversations: Conversation[] = [
     resources: [
       {
         id: "doc-question-record",
-        title: "Session record — publishes after the session",
+        title: "Session record (publishes after the session)",
         kind: "summary",
         status: "in-development",
       },
@@ -88,7 +88,7 @@ export const conversations: Conversation[] = [
     stakeholders: ["industry", "global", "community"],
     topicSlugs: ["employability", "skills", "future-of-work", "ai-and-education", "industry-academia-gap"],
     summary:
-      "On October 2, a 24-hour global relay follows the sun — industry leaders, practitioners and international communities, region by region, on the capabilities the future will actually demand. This page will hold the relay's complete record: recordings from each leg, summaries, transcripts, and the picture that emerges when many regions answer the same question in their own accents.",
+      "On October 2, a 24-hour global relay follows the sun: industry leaders, practitioners and international communities, region by region, on the capabilities the future will actually demand. This page will hold the relay's complete record: recordings from each leg, summaries, transcripts, and the picture that emerges when many regions answer the same question in their own accents.",
     transcriptStatus: "pending",
     keyQuestions: ["What capabilities will the future demand?"],
     observations: [],
@@ -98,7 +98,7 @@ export const conversations: Conversation[] = [
     resources: [
       {
         id: "doc-connect-record",
-        title: "Relay documentation — publishes after the relay",
+        title: "Relay documentation (publishes after the relay)",
         kind: "summary",
         status: "in-development",
       },
@@ -113,7 +113,7 @@ export const conversations: Conversation[] = [
     stakeholders: ["students", "educators", "researchers", "industry", "policymakers", "community"],
     topicSlugs: ["assessment", "curriculum", "industry-academia-gap", "learning-communities"],
     summary:
-      "On November 14, every stakeholder group meets in one room in Kerala — the convergence. Three months of documented conversation get worked into buildable proposals: which ideas advance, which prototypes get teams, and what the handover will carry. This page becomes the convergence's permanent record — the working sessions, the decisions, and the build list that comes out of them.",
+      "On November 14, every stakeholder group meets in one room in Kerala: the convergence. Three months of documented conversation get worked into buildable proposals: which ideas advance, which prototypes get teams, and what the handover will carry. This page becomes the convergence's permanent record: the working sessions, the decisions, and the build list that comes out of them.",
     transcriptStatus: "pending",
     keyQuestions: ["What can we actually build?"],
     observations: [],
@@ -123,7 +123,7 @@ export const conversations: Conversation[] = [
     resources: [
       {
         id: "doc-build-record",
-        title: "Convergence record — publishes after the gathering",
+        title: "Convergence record (publishes after the gathering)",
         kind: "summary",
         status: "in-development",
       },
@@ -138,7 +138,7 @@ export const conversations: Conversation[] = [
     stakeholders: ["global", "community"],
     topicSlugs: ["skills", "future-of-work", "policy"],
     summary:
-      "On December 10 — Human Rights Day — the movement reports back to the Global Action Network: the evidence gathered across four stakeholder conversations, the ideas that advanced, and the prototypes taking shape. Education, examined as a human right. This page becomes the update's permanent record: the recording, the progress report, and the network's responses.",
+      "On December 10, Human Rights Day, the movement reports back to the Global Action Network: the evidence gathered across four stakeholder conversations, the ideas that advanced, and the prototypes taking shape. Education, examined as a human right. This page becomes the update's permanent record: the recording, the progress report, and the network's responses.",
     transcriptStatus: "pending",
     keyQuestions: ["What have we built together?"],
     observations: [],
@@ -148,7 +148,7 @@ export const conversations: Conversation[] = [
     resources: [
       {
         id: "doc-act-record",
-        title: "Global Action Network update — publishes after the session",
+        title: "Global Action Network update (publishes after the session)",
         kind: "summary",
         status: "in-development",
       },
@@ -163,7 +163,7 @@ export const conversations: Conversation[] = [
     stakeholders: ["policymakers", "industry", "educators", "community"],
     topicSlugs: ["policy", "higher-education"],
     summary:
-      "On January 26 — Republic Day — the journey ends in something you can hold. The consolidated documentation and the working prototypes are formally handed over to the decision makers of every stakeholder group, including the relevant Union Ministry. This page becomes the handover's permanent record: who received what, the commitments made in response, and where the record lives from here.",
+      "On January 26, Republic Day, the journey ends in something you can hold. The consolidated documentation and the working prototypes are formally handed over to the decision makers of every stakeholder group, including the relevant Union Ministry. This page becomes the handover's permanent record: who received what, the commitments made in response, and where the record lives from here.",
     transcriptStatus: "pending",
     keyQuestions: ["What will you carry forward?"],
     observations: [],
@@ -173,7 +173,7 @@ export const conversations: Conversation[] = [
     resources: [
       {
         id: "doc-deliver-record",
-        title: "Handover record — publishes after Republic Day",
+        title: "Handover record (publishes after Republic Day)",
         kind: "summary",
         status: "in-development",
       },

@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (limited(ip)) {
     return NextResponse.json(
-      { error: "Too many attempts — try again in 15 minutes." },
+      { error: "Too many attempts. Try again in 15 minutes." },
       { status: 429 },
     );
   }

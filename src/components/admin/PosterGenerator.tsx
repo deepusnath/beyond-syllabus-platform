@@ -268,7 +268,7 @@ export function PosterGenerator({ speaker, events }: { speaker: Speaker; events:
           >
             {events.map((e) => (
               <option key={e.id} value={e.id}>
-                {e.dateLabel} — {e.title}
+                {e.dateLabel} · {e.title}
               </option>
             ))}
           </select>
@@ -289,7 +289,7 @@ export function PosterGenerator({ speaker, events }: { speaker: Speaker; events:
               {status === "ready" ? "Download poster (PNG)" : "Rendering…"}
             </button>
             <p className="text-xs leading-relaxed text-ink-soft">
-              2000×2503px — the announcement format used on social media. The portrait and text
+              2000×2503px, the announcement format used on social media. The portrait and text
               come from the published record; edit the voice first if anything needs fixing.
             </p>
           </>

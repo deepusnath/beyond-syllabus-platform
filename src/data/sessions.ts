@@ -31,7 +31,7 @@ export const sessions: Session[] = [
       "arundhathi-krishna",
     ],
     description:
-      "Students and student communities open the journey — the generation experiencing the education system directly sets the agenda.",
+      "Students and student communities open the journey. The generation experiencing the education system directly sets the agenda.",
   },
   {
     id: "s-question-1",

@@ -6,7 +6,7 @@ import { SectionHeading, Chip } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Outcomes",
   description:
-    "What we heard, what we learned, what we built, what we recommend — the public record of Beyond Syllabus, handed to the decision makers of every stakeholder group on Republic Day 2027.",
+    "What we heard, what we learned, what we built, what we recommend: the public record of Beyond Syllabus, handed to the decision makers of every stakeholder group on Republic Day 2027.",
 };
 
 /*
@@ -28,7 +28,7 @@ export default function OutcomesPage() {
       <SectionHeading
         kicker="Policy & outcomes"
         title="The handover"
-        lede="Beyond Syllabus ends in something you can hold. On Human Rights Day (December 10) the Global Action Network hears what was built; on Republic Day (January 26, 2027) the consolidated evidence, practical recommendations and working prototypes are handed over to the decision makers of every stakeholder group — including the relevant Union Ministry."
+        lede="Beyond Syllabus ends in something you can hold. On Human Rights Day (December 10) the Global Action Network hears what was built; on Republic Day (January 26, 2027) the consolidated evidence, practical recommendations and working prototypes are handed over to the decision makers of every stakeholder group, including the relevant Union Ministry."
       />
 
       <OutcomePipeline />
@@ -40,7 +40,7 @@ export default function OutcomesPage() {
           <Chip tone="mint">In development</Chip>
         </div>
         <p className="mt-6 max-w-2xl leading-relaxed text-paper/80">
-          The report is being built in public across the journey — its evidence accumulates in
+          The report is being built in public across the journey. Its evidence accumulates in
           the Capability Commons, its recommendations in the idea pipeline, and its prototypes in
           the lab. It is handed over on Republic Day, January 26, 2027, and will be downloadable
           here.
@@ -59,7 +59,7 @@ export default function OutcomesPage() {
           aria-disabled="true"
           className="condensed mt-10 inline-flex cursor-not-allowed items-center gap-3 border-2 border-dashed border-paper/40 px-7 py-4 text-base font-semibold tracking-[0.1em] text-paper/60"
         >
-          Download the Handover Report — in development
+          Download the Handover Report (in development)
         </p>
       </section>
 

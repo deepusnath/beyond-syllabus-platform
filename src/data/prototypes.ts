@@ -11,7 +11,7 @@ export const prototypes: Prototype[] = [
     slug: "portfolio-pilot",
     title: "The Portfolio Pilot",
     problem:
-      "Employers say they trust evidence of real work over marks — but few institutions offer students a structured way to produce and certify that evidence.",
+      "Employers say they trust evidence of real work over marks, but few institutions offer students a structured way to produce and certify that evidence.",
     hypothesis:
       "If a cohort maintains an evidenced portfolio against a published capability rubric for one term, external reviewers will rate it a stronger hiring signal than the same cohort's marksheets.",
     solution:
@@ -19,7 +19,7 @@ export const prototypes: Prototype[] = [
     team: ["To be formed after the November convergence"],
     status: "research",
     implementation:
-      "Nothing is being built yet — this illustrative example shows the documentation each prototype will carry in public: the problem it attacks, its testable hypothesis, the build log, the evidence behind it, and its honest results. The first real prototypes are selected from the idea pipeline at the November 14 convergence and developed toward the January 26 handover.",
+      "Nothing is being built yet. This illustrative example shows the documentation each prototype will carry in public: the problem it attacks, its testable hypothesis, the build log, the evidence behind it, and its honest results. The first real prototypes are selected from the idea pipeline at the November 14 convergence and developed toward the January 26 handover.",
     evidence: [
       "Grounded in the assessment arguments of the movement's published thinking.",
       "Evidence from the documented conversations will be linked here as prototypes become real.",

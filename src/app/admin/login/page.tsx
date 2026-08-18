@@ -24,7 +24,7 @@ export default function AdminLoginPage() {
       router.refresh();
     } else {
       const data = (await res.json().catch(() => null)) as { error?: string } | null;
-      setError(data?.error ?? "Something went wrong — try again.");
+      setError(data?.error ?? "Something went wrong. Try again.");
     }
   }
 

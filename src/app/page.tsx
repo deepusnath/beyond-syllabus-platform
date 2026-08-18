@@ -32,7 +32,7 @@ function eventSeriesJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "EventSeries",
-    name: "Beyond Syllabus — Bridge The Gap 4.0",
+    name: "Beyond Syllabus (Bridge The Gap 4.0)",
     description:
       "A six-month stakeholder initiative to redesign education for the next generation, ending in recommendations and working prototypes handed to decision makers.",
     organizer: { "@type": "Organization", name: "The Purple Movement" },
@@ -76,9 +76,9 @@ export default function HomePage() {
       <section className="border-y border-purple-line bg-purple-soft/40">
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
           <SectionHeading
-            kicker="The journey · Aug 2026 — Jan 2027"
+            kicker="The journey · Aug 2026 to Jan 2027"
             title="Listen. Question. Connect. Build. Act. Deliver."
-            lede="Six stages, each adding a stakeholder group and carrying forward everything gathered before it — ending in a handover on Republic Day."
+            lede="Six stages, each adding a stakeholder group and carrying forward everything gathered before it, ending in a handover on Republic Day."
           />
           <JourneyTimeline />
           <CtaLink href="/journey" tone="ink" className="mt-6">
@@ -92,7 +92,7 @@ export default function HomePage() {
         <SectionHeading
           kicker="The public record"
           title="Every conversation leaves evidence"
-          lede="Major discussions are documented and published — video, summaries, transcripts, agreements and disagreements alike."
+          lede="Major discussions are documented and published: video, summaries, transcripts, agreements and disagreements alike."
         />
         <ul className="mt-14 grid gap-8 md:grid-cols-3">
           {conversations.map((c) => (

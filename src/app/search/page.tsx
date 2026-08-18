@@ -6,7 +6,7 @@ import { Kicker } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Search",
   description:
-    "Search the entire Beyond Syllabus public record — sessions, voices, transcripts, topics, ideas, prototypes and recommendations.",
+    "Search the entire Beyond Syllabus public record: sessions, voices, transcripts, topics, ideas, prototypes and recommendations.",
 };
 
 export default function SearchPage() {

@@ -40,7 +40,7 @@ export function SearchExplorer({ index }: { index: SearchRecord[] }) {
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Try “assessment” — sessions, voices, ideas, prototypes, topics…"
+          placeholder="Try “assessment”: sessions, voices, ideas, prototypes, topics…"
           className="w-full border-b-4 border-ink bg-transparent py-4 text-2xl font-medium placeholder:text-ink-soft/50 focus:border-purple focus:outline-none sm:text-3xl"
         />
       </label>

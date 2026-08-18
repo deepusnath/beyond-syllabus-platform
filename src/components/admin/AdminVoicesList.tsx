@@ -36,7 +36,7 @@ export function AdminVoiceRow({ speaker, sessionTitle }: { speaker: Speaker; ses
       router.refresh();
     } else {
       const data = (await res.json().catch(() => null)) as { error?: string } | null;
-      setError(data?.error ?? "Could not remove — try again.");
+      setError(data?.error ?? "Could not remove. Try again.");
       setConfirming(false);
     }
   }

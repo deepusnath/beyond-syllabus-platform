@@ -45,7 +45,7 @@ export function VoicesExplorer() {
 
       {visible.length === 0 ? (
         <p className="mt-12 max-w-xl text-ink-soft">
-          No voices announced in this group yet — they will appear here as sessions are confirmed.
+          No voices announced in this group yet. They will appear here as sessions are confirmed.
         </p>
       ) : (
         <ul className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -184,7 +184,7 @@ export function LivePlayer() {
           </p>
         </div>
         <div className="mt-5 border-2 border-ink">
-          <StreamFrame title={`${event.title} — live`} />
+          <StreamFrame title={`${event.title} (live)`} />
         </div>
         {session && (
           <div className="mt-5 border-l-4 border-signal bg-purple-soft/60 px-5 py-4">
@@ -215,7 +215,7 @@ export function LivePlayer() {
           </p>
         </div>
         <div className="mt-5 border-2 border-ink">
-          <StreamFrame title={`${event.title} — upcoming`} />
+          <StreamFrame title={`${event.title} (upcoming)`} />
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
           <div className="border-t-2 border-ink pt-3">
@@ -254,7 +254,7 @@ export function LivePlayer() {
         )}
       </div>
       <div className="mt-5 border-2 border-ink">
-        <StreamFrame title={last ? `${last.title} — recording` : "Latest broadcast"} />
+        <StreamFrame title={last ? `${last.title} (recording)` : "Latest broadcast"} />
       </div>
       {last && (
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-soft">{last.description}</p>

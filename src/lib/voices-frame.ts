@@ -60,7 +60,7 @@ function circleMaskSvg(): string {
  */
 export async function renderHeadshot(input: Buffer, crop: CropParams): Promise<Buffer> {
   if (input.byteLength > MAX_UPLOAD_BYTES) {
-    throw new Error("Photo is larger than 10MB — use a smaller image.");
+    throw new Error("Photo is larger than 10MB. Use a smaller image.");
   }
 
   // Decode via sharp only; rejects non-images and disarms crafted files.
@@ -72,7 +72,7 @@ export async function renderHeadshot(input: Buffer, crop: CropParams): Promise<B
   const width = meta.width ?? 0;
   const height = meta.height ?? 0;
   if (width < 200 || height < 200) {
-    throw new Error("Photo is too small — at least 200×200 pixels needed.");
+    throw new Error("Photo is too small. It needs to be at least 200×200 pixels.");
   }
 
   // Clamp the crop square into the image bounds.

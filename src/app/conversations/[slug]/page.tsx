@@ -74,7 +74,7 @@ export default async function ConversationPage({
           <div className="aspect-video w-full bg-ink">
             <iframe
               src={conversation.videoUrl}
-              title={`${conversation.title} — recording`}
+              title={`${conversation.title} (recording)`}
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="h-full w-full"

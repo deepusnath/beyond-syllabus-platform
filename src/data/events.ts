@@ -35,7 +35,7 @@ export const events: Event[] = [
     dateLabel: "SEP 05",
     format: "online",
     description:
-      "Educators, researchers and policymakers join the conversation — responding to what students said, and interrogating what education should become rather than what it has been.",
+      "Educators, researchers and policymakers join the conversation, responding to what students said and interrogating what education should become rather than what it has been.",
     confirmed: true,
   },
   {
@@ -52,7 +52,7 @@ export const events: Event[] = [
     format: "relay",
     isGlobalRelay: true,
     description:
-      "A 24-hour global relay following the sun — industry leaders, practitioners and international communities connecting region by region on the capabilities the future will demand.",
+      "A 24-hour global relay following the sun: industry leaders, practitioners and international communities connecting region by region on the capabilities the future will demand.",
     confirmed: true,
   },
   {
@@ -69,7 +69,7 @@ export const events: Event[] = [
     format: "in-person",
     location: "Kerala, India",
     description:
-      "An in-person gathering bringing the different perspectives together — students, educators, researchers, industry, policymakers and communities in one room, working on what can actually be built.",
+      "An in-person gathering bringing the different perspectives together: students, educators, researchers, industry, policymakers and communities in one room, working on what can actually be built.",
     confirmed: true,
   },
   {
@@ -85,7 +85,7 @@ export const events: Event[] = [
     dateLabel: "DEC 10",
     format: "online",
     description:
-      "On Human Rights Day, the movement reports back to the Global Action Network: the evidence gathered, the ideas advanced, and the working prototypes taking shape — education, examined as a human right.",
+      "On Human Rights Day, the movement reports back to the Global Action Network: the evidence gathered, the ideas advanced, and the working prototypes taking shape. Education, examined as a human right.",
     confirmed: true,
   },
   {
@@ -101,7 +101,7 @@ export const events: Event[] = [
     dateLabel: "JAN 26",
     format: "in-person",
     description:
-      "On Republic Day, the documentation and the working prototypes are formally handed over to the decision makers of every stakeholder group — including the relevant Union Ministry. The conversation becomes their mandate.",
+      "On Republic Day, the documentation and the working prototypes are formally handed over to the decision makers of every stakeholder group, including the relevant Union Ministry. The conversation becomes their mandate.",
     confirmed: true,
   },
 ];

@@ -97,11 +97,11 @@ export function ParticipatePaths() {
                   action,
                 });
                 const data = new FormData(e.currentTarget);
-                const subject = `[Beyond Syllabus] ${action} — ${selected.label}`;
+                const subject = `[Beyond Syllabus] ${action} | ${selected.label}`;
                 const body = [
                   `Name: ${data.get("name")}`,
                   `Email: ${data.get("email")}`,
-                  `Organisation/community: ${data.get("organisation") || "—"}`,
+                  `Organisation/community: ${data.get("organisation") || "-"}`,
                   `Path: ${selected.label}`,
                   `Action: ${action}`,
                   "",
@@ -131,11 +131,11 @@ export function ParticipatePaths() {
                 <label className="block">
                   <span className="kicker">
                     {action === "Submit an idea"
-                      ? "The idea — what problem, what intervention?"
+                      ? "The idea: what problem, what intervention?"
                       : action === "Propose a prototype"
-                        ? "The prototype — what would you build, and why?"
+                        ? "The prototype: what would you build, and why?"
                         : action === "Nominate a speaker"
-                          ? "Who — and what idea do they bring?"
+                          ? "Who are they, and what idea do they bring?"
                           : "Anything we should know?"}
                   </span>
                   <textarea name="message" rows={5} className="mt-2 w-full border-2 border-ink bg-paper px-4 py-2.5 text-sm" />
@@ -149,18 +149,18 @@ export function ParticipatePaths() {
               </button>
               <p className="mt-4 text-xs text-ink-soft">
                 Sending opens your email app with everything filled in, addressed to the organising
-                team — press send there and you&apos;re in the conversation.
+                team. Press send there and you&apos;re in the conversation.
               </p>
             </form>
           )}
 
           {submitted && (
             <div role="status" className="mt-10 max-w-2xl border-l-4 border-mint bg-purple-soft/60 p-6">
-              <p className="display text-2xl">Almost there — press send.</p>
+              <p className="display text-2xl">Almost there. Press send.</p>
               <p className="mt-2 text-sm text-ink-soft">
                 Your email app should have opened with your details addressed to the organising
                 team ({participateEmail}). Press send there to complete it. If it didn&apos;t open,
-                email us directly at <span className="font-semibold">{participateEmail}</span> —
+                email us directly at <span className="font-semibold">{participateEmail}</span>,
                 or just show up on the next live date.
               </p>
             </div>

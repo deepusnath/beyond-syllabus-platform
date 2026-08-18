@@ -27,7 +27,7 @@ export default async function AdminVoicesPage() {
         </div>
       </div>
       <p className="mt-3 max-w-2xl text-sm text-ink-soft">
-        Everything here publishes straight to the public site — each change is a commit and goes
+        Everything here publishes straight to the public site. Each change is a commit and goes
         live with the automatic deploy in about a minute.
       </p>
 

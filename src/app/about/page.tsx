@@ -6,7 +6,7 @@ import { DottedRing } from "@/components/PosterMotif";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Why Beyond Syllabus exists — Bridge The Gap 4.0, an initiative of The Purple Movement to move education from protest to prototype.",
+    "Why Beyond Syllabus exists: Bridge The Gap 4.0, an initiative of The Purple Movement to move education from protest to prototype.",
 };
 
 export default function AboutPage() {
@@ -22,14 +22,14 @@ export default function AboutPage() {
         <div className="space-y-8 text-lg leading-relaxed text-ink-soft">
           <p>
             Between August 2026 and January 2027, Beyond Syllabus brings each stakeholder group
-            into a documented public conversation — students first, then academics and
+            into a documented public conversation: students first, then academics and
             policymakers, then industry and the global community, then everyone in one room.
           </p>
           <p>
             Everything is recorded, summarised and published. Agreements and disagreements alike.
             Ideas are captured and tracked as they mature; the strongest become working
             prototypes. On Human Rights Day (December 10) the Global Action Network hears what
-            was built — and on Republic Day (January 26, 2027) the consolidated evidence,
+            was built. On Republic Day (January 26, 2027) the consolidated evidence,
             recommendations and working prototypes are handed over to the decision makers of
             every stakeholder group, including the relevant Union Ministry.
           </p>
@@ -41,7 +41,7 @@ export default function AboutPage() {
             <span className="text-gradient-purple">From conversation to action.</span>
           </p>
           <p>
-            The Purple Movement&apos;s framing is simple: red plus blue makes purple — energy plus
+            The Purple Movement&apos;s framing is simple: red plus blue makes purple: energy plus
             wisdom, questioning plus building. Beyond gatekeepers, beyond borders, beyond syllabus.
           </p>
         </div>
@@ -50,13 +50,13 @@ export default function AboutPage() {
           <figure className="border-2 border-ink p-3">
             <Image
               src="/poster/beyond-syllabus-2026.jpg"
-              alt="Bridge The Gap 4.0 — Beyond Syllabus poster: a symposium for the future of education, 5 September 2026, online live session."
+              alt="Bridge The Gap 4.0, the Beyond Syllabus poster: a symposium for the future of education, 5 September 2026, online live session."
               width={1278}
               height={1600}
               className="h-auto w-full"
             />
             <figcaption className="condensed mt-3 px-1 text-[0.65rem] font-medium tracking-[0.16em] text-ink-soft">
-              The Bridge The Gap 4.0 poster — the visual identity this platform extends.
+              The Bridge The Gap 4.0 poster, the visual identity this platform extends.
             </figcaption>
           </figure>
           <div className="relative border-2 border-ink p-6">

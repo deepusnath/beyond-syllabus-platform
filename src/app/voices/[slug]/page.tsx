@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!speaker) return {};
   return {
     title: speaker.name,
-    description: `${speaker.role}, ${speaker.organisation}${speaker.keyIdea ? ` — ${speaker.keyIdea}` : " — a voice of Beyond Syllabus"}`,
+    description: `${speaker.role}, ${speaker.organisation}${speaker.keyIdea ? `. ${speaker.keyIdea}` : ". A voice of Beyond Syllabus."}`,
   };
 }
 
@@ -56,7 +56,7 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={speaker.photo}
-            alt={`${speaker.name} — portrait`}
+            alt={`Portrait of ${speaker.name}`}
             width={208}
             height={208}
             className="h-40 w-40 shrink-0 rounded-full object-cover sm:h-52 sm:w-52"
@@ -84,7 +84,7 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
           ) : (
             <p className="leading-relaxed text-ink-soft">
               {speaker.name} joins Beyond Syllabus as part of the conversation. Their
-              contribution will be documented here — with the session record and transcript —
+              contribution will be documented here, with the session record and transcript,
               as the archive grows.
             </p>
           )}

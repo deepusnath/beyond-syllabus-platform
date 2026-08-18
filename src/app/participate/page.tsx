@@ -5,7 +5,7 @@ import { ParticipatePaths } from "@/components/ParticipatePaths";
 export const metadata: Metadata = {
   title: "Participate",
   description:
-    "How students, educators, researchers, industry, policymakers and community leaders can contribute to Beyond Syllabus — attend, submit ideas, share research, volunteer, nominate speakers, propose prototypes.",
+    "How students, educators, researchers, industry, policymakers and community leaders can contribute to Beyond Syllabus: attend, submit ideas, share research, volunteer, nominate speakers, propose prototypes.",
 };
 
 export default function ParticipatePage() {
@@ -14,7 +14,7 @@ export default function ParticipatePage() {
       <SectionHeading
         kicker="Public participation"
         title="Enter the conversation"
-        lede="This process is only as good as the people in it. Pick who you are — and see exactly how you can contribute."
+        lede="This process is only as good as the people in it. Pick who you are, and see exactly how you can contribute."
         className="mb-14"
       />
       <ParticipatePaths />

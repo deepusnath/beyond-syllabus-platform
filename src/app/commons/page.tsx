@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Capability Commons",
   description:
-    "The public intellectual archive of Beyond Syllabus — discussions, quotes, evidence, research, proposals, videos, transcripts and prototypes, organised by theme.",
+    "The public intellectual archive of Beyond Syllabus: discussions, quotes, evidence, research, proposals, videos, transcripts and prototypes, organised by theme.",
 };
 
 export default function CommonsPage() {
@@ -17,7 +17,7 @@ export default function CommonsPage() {
       <SectionHeading
         kicker="The public intellectual archive"
         title="Capability Commons"
-        lede="Every conversation leaves evidence. Every idea remains accessible. The archive is organised by theme — each theme aggregates the discussions, quotes, research, proposals and prototypes that touch it."
+        lede="Every conversation leaves evidence. Every idea remains accessible. The archive is organised by theme. Each theme aggregates the discussions, quotes, research, proposals and prototypes that touch it."
       />
       <ul className="mt-14 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
         {topics.map((topic, i) => {
