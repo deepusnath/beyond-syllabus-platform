@@ -30,11 +30,12 @@ export function ConversationCard({ conversation }: { conversation: Conversation 
           ))}
         </div>
       </div>
-      <div className="border-t border-purple-line px-6 py-3">
-        <span className="condensed text-xs font-semibold tracking-[0.18em] text-purple-deep">
-          Read the record →
-        </span>
-      </div>
+      <Link
+        href={`/conversations/${conversation.slug}`}
+        className="condensed block border-t border-purple-line px-6 py-3 text-xs font-semibold tracking-[0.18em] text-purple-deep hover:bg-purple-soft"
+      >
+        Read the record →
+      </Link>
     </article>
   );
 }
@@ -123,11 +124,12 @@ export function PrototypeCard({ prototype }: { prototype: Prototype }) {
           <span className="mt-2 block text-paper/90">{prototype.hypothesis}</span>
         </p>
       </div>
-      <div className="border-t border-white/15 px-6 py-3">
-        <span className="condensed text-xs font-semibold tracking-[0.18em] text-purple-bright">
-          Open the lab notes →
-        </span>
-      </div>
+      <Link
+        href={`/prototypes/${prototype.slug}`}
+        className="condensed block border-t border-white/15 px-6 py-3 text-xs font-semibold tracking-[0.18em] text-purple-bright hover:bg-white/10"
+      >
+        Open the lab notes →
+      </Link>
     </article>
   );
 }
