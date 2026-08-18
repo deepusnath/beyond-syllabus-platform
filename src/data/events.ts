@@ -80,8 +80,8 @@ export const events: Event[] = [
     title: "Global Action Network Update",
     audience: "The Global Action Network",
     question: "What have we built together?",
-    start: "2026-12-10T15:00:00+05:30",
-    end: "2026-12-10T18:00:00+05:30",
+    start: "2026-12-10T19:00:00+05:30",
+    end: "2026-12-10T21:00:00+05:30",
     dateLabel: "DEC 10",
     format: "online",
     description:
