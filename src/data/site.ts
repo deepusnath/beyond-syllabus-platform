@@ -14,9 +14,12 @@ export const site: SiteConfig = {
     streamUrl: process.env.NEXT_PUBLIC_LIVE_STREAM_URL || undefined,
     forceLive: process.env.NEXT_PUBLIC_FORCE_LIVE === "true",
   },
-  // Handle is @purplemovement across platforms (from the poster); add URLs
-  // here once confirmed. Empty urls are not rendered.
-  social: [],
+  social: [
+    { label: "Instagram", url: "https://www.instagram.com/tpm.live/" },
+    { label: "X", url: "https://x.com/ThePurpleMVMT" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/company/the-purple-movement/" },
+    { label: "YouTube", url: "https://www.youtube.com/@ThePurpleMovement" },
+  ],
   registrationUrl: undefined,
 };
 
