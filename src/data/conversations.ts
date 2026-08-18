@@ -110,7 +110,7 @@ export const conversations: Conversation[] = [
     eventId: "build",
     date: "2026-11-14",
     participantSlugs: [],
-    stakeholders: ["students", "educators", "researchers", "industry", "policymakers", "community"],
+    stakeholders: ["students", "educators", "researchers", "industry", "policymakers", "community", "global"],
     topicSlugs: ["assessment", "curriculum", "industry-academia-gap", "learning-communities"],
     summary:
       "On November 14, every stakeholder group meets in one room in Kerala: the convergence. Three months of documented conversation get worked into buildable proposals: which ideas advance, which prototypes get teams, and what the handover will carry. This page becomes the convergence's permanent record: the working sessions, the decisions, and the build list that comes out of them.",
@@ -135,7 +135,7 @@ export const conversations: Conversation[] = [
     eventId: "act",
     date: "2026-12-10",
     participantSlugs: [],
-    stakeholders: ["global", "community"],
+    stakeholders: ["students", "educators", "researchers", "industry", "policymakers", "community", "global"],
     topicSlugs: ["skills", "future-of-work", "policy"],
     summary:
       "On December 10, Human Rights Day, the movement reports back to the Global Action Network: the evidence gathered across four stakeholder conversations, the ideas that advanced, and the prototypes taking shape. Education, examined as a human right. This page becomes the update's permanent record: the recording, the progress report, and the network's responses.",
@@ -160,7 +160,7 @@ export const conversations: Conversation[] = [
     eventId: "deliver",
     date: "2027-01-26",
     participantSlugs: [],
-    stakeholders: ["policymakers", "industry", "educators", "community"],
+    stakeholders: ["students", "educators", "researchers", "industry", "policymakers", "community", "global"],
     topicSlugs: ["policy", "higher-education"],
     summary:
       "On January 26, Republic Day, the journey ends in something you can hold. The consolidated documentation and the working prototypes are formally handed over to the decision makers of every stakeholder group, including the relevant Union Ministry. This page becomes the handover's permanent record: who received what, the commitments made in response, and where the record lives from here.",
