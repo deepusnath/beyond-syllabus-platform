@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { present } from "@/lib/util";
+import { stakeholderSingular } from "@/lib/stakeholders";
 import {
   getConversation,
   getEvent,
   getSessions,
   getSpeaker,
   getSpeakers,
-  stakeholderLabels,
 } from "@/lib/content";
 import { BackLink, Kicker, SampleBadge, Chip } from "@/components/ui";
 
@@ -44,7 +44,7 @@ export default async function VoicePage({ params }: { params: Promise<{ slug: st
       {speaker.sample && <SampleBadge className="mb-6" />}
       <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <Kicker>{stakeholderLabels[speaker.category]}</Kicker>
+          <Kicker>{stakeholderSingular[speaker.category]}</Kicker>
           <h1 className="display mt-4 text-6xl sm:text-7xl">{speaker.name}</h1>
           <p className="mt-3 text-lg text-ink-soft">
             {speaker.role} · {speaker.organisation}

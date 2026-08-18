@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Session, Speaker } from "@/lib/types";
-import { stakeholderLabels } from "@/lib/stakeholders";
+import { stakeholderSingular } from "@/lib/stakeholders";
 import { ringPoints, slugify } from "@/lib/util";
 
 /*
@@ -247,7 +247,7 @@ export function VoiceForm({ sessions, existing }: Props) {
           <label className="block">
             <span className="kicker">Stakeholder group</span>
             <select value={category} onChange={(e) => setCategory(e.target.value as typeof category)} className={input}>
-              {Object.entries(stakeholderLabels).map(([value, label]) => (
+              {Object.entries(stakeholderSingular).map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
               ))}
             </select>

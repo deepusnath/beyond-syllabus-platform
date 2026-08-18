@@ -19,6 +19,17 @@ export const stakeholderLabels: Record<StakeholderGroup, string> = {
   global: "Global Voices",
 };
 
+/** Singular forms, for labelling one person ("Student", not "Students"). */
+export const stakeholderSingular: Record<StakeholderGroup, string> = {
+  students: "Student",
+  educators: "Educator",
+  researchers: "Researcher",
+  industry: "Industry",
+  policymakers: "Policymaker",
+  community: "Community Leader",
+  global: "Global Voice",
+};
+
 export const STAKEHOLDER_GROUPS = Object.keys(stakeholderLabels) as StakeholderGroup[];
 
 export function isStakeholderGroup(value: unknown): value is StakeholderGroup {

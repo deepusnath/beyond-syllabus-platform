@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 import { participateEmail } from "@/data/site";
-import { stakeholderLabels } from "@/lib/stakeholders";
+import { stakeholderSingular } from "@/lib/stakeholders";
 import { ringPoints } from "@/lib/util";
 
 /*
@@ -118,7 +118,7 @@ export function JoinTheConversation() {
       `Name: ${name}`,
       `Email: ${email}`,
       `Organisation/community: ${organisation || "-"}`,
-      `Stakeholder: ${stakeholderLabels[stakeholder as keyof typeof stakeholderLabels] ?? stakeholder}`,
+      `Speaking as: ${stakeholderSingular[stakeholder as keyof typeof stakeholderSingular] ?? stakeholder}`,
       `Video link: ${videoUrl || "-"}`,
       "",
       ...QUESTIONS.flatMap((q, i) => [`Q${i + 1}. ${q}`, answers[i].trim() || "-", ""]),
@@ -196,7 +196,7 @@ export function JoinTheConversation() {
         <label className="block">
           <span className="kicker">I am speaking as</span>
           <select value={stakeholder} onChange={(e) => setStakeholder(e.target.value)} className={input}>
-            {Object.entries(stakeholderLabels).map(([value, label]) => (
+            {Object.entries(stakeholderSingular).map(([value, label]) => (
               <option key={value} value={value}>{label}</option>
             ))}
           </select>

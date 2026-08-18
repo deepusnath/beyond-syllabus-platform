@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Conversation, Idea, Prototype, Speaker } from "@/lib/types";
 import { getEvent, stakeholderLabels } from "@/lib/content";
+import { stakeholderSingular } from "@/lib/stakeholders";
 import { Chip, SampleBadge } from "@/components/ui";
 
 export function ConversationCard({ conversation }: { conversation: Conversation }) {
@@ -172,7 +173,7 @@ export function VoiceCard({ speaker }: { speaker: Speaker }) {
           {speaker.role} · {speaker.organisation}
         </p>
         <p className="condensed mt-3 text-[0.65rem] font-medium tracking-[0.18em] text-ink-soft">
-          {stakeholderLabels[speaker.category]}
+          {stakeholderSingular[speaker.category]}
         </p>
       </div>
     </article>

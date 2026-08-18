@@ -8,8 +8,8 @@ import {
   getEvent,
   getSpeaker,
   getTopic,
-  stakeholderLabels,
 } from "@/lib/content";
+import { stakeholderSingular } from "@/lib/stakeholders";
 import { BackLink, Chip, SampleBadge } from "@/components/ui";
 
 export function generateStaticParams() {
@@ -136,7 +136,7 @@ export default async function ConversationPage({
                 <li key={p.slug}>
                   <Link href={`/voices/${p.slug}`} className="group block">
                     <p className="font-semibold text-ink group-hover:text-purple-deep">{p.name}</p>
-                    <p className="text-xs text-ink-soft">{stakeholderLabels[p.category]}</p>
+                    <p className="text-xs text-ink-soft">{stakeholderSingular[p.category]}</p>
                   </Link>
                 </li>
               ))}
