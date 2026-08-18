@@ -101,7 +101,16 @@ export function JoinTheConversation() {
   const [videoUrl, setVideoUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    // Native share sheet (mobile mainly); detected after mount to avoid
+    // a server/client render mismatch.
+    const id = setTimeout(() => setCanNativeShare(typeof navigator.share === "function"), 0);
+    return () => clearTimeout(id);
+  }, []);
 
   const paint = useCallback(() => {
     if (canvasRef.current) drawBadge(canvasRef.current, name);
@@ -148,6 +157,44 @@ export function JoinTheConversation() {
     }, "image/png");
   }
 
+  const shareCaption =
+    "I'm part of the conversation. I just added my voice to Beyond Syllabus, a six-month journey to redesign education for the next generation. Add yours at capabilitycommons.com #BeyondSyllabus @purplemovement";
+  const shareUrl = "https://capabilitycommons.com/participate";
+
+  async function shareBadge() {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const blob = await new Promise<Blob | null>((r) => canvas.toBlob(r, "image/png"));
+    if (!blob) return;
+    const file = new File([blob], "beyond-syllabus-badge.png", { type: "image/png" });
+    try {
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], text: shareCaption });
+      } else if (navigator.share) {
+        await navigator.share({ text: shareCaption, url: shareUrl });
+      }
+    } catch {
+      // Cancelled by the user; nothing to do.
+    }
+  }
+
+  async function copyCaption() {
+    try {
+      await navigator.clipboard.writeText(shareCaption);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard unavailable; the caption is visible on screen anyway.
+    }
+  }
+
+  const shareTargets = [
+    { label: "X", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareCaption)}` },
+    { label: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(`${shareCaption} ${shareUrl}`)}` },
+    { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}` },
+    { label: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+  ];
+
   const input = "mt-2 w-full border-2 border-ink bg-paper px-4 py-2.5 text-sm";
 
   if (submitted) {
@@ -162,20 +209,56 @@ export function JoinTheConversation() {
               us directly.
             </p>
           </div>
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 space-y-5">
             <h3 className="display text-2xl">Now make it public.</h3>
             <p className="max-w-xl text-sm leading-relaxed text-ink-soft">
-              Download your badge and post it on your profile. Tag
-              <span className="font-semibold text-ink"> @purplemovement</span>, share your answers
+              Share your badge, tag
+              <span className="font-semibold text-ink"> @purplemovement</span>, add your answers
               in your own words (a short video works best), and ask one more person to join the
               conversation. That is how a conversation becomes a movement.
             </p>
+
+            {canNativeShare && (
+              <button
+                type="button"
+                onClick={shareBadge}
+                className="condensed bg-purple px-7 py-4 text-base font-semibold tracking-[0.1em] text-white transition-colors hover:bg-purple-deep"
+              >
+                Share your badge
+              </button>
+            )}
+
+            <div className="flex flex-wrap items-center gap-2">
+              {shareTargets.map((t) => (
+                <a
+                  key={t.label}
+                  href={t.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="condensed border-2 border-ink px-4 py-2.5 text-xs font-semibold tracking-[0.12em] transition-colors hover:bg-ink hover:text-paper"
+                >
+                  {t.label}
+                </a>
+              ))}
+              <button
+                type="button"
+                onClick={copyCaption}
+                className="condensed border-2 border-purple px-4 py-2.5 text-xs font-semibold tracking-[0.12em] text-purple-deep transition-colors hover:bg-purple hover:text-white"
+              >
+                {copied ? "Copied!" : "Copy caption"}
+              </button>
+            </div>
+
+            <div className="max-w-xl border-l-4 border-purple bg-purple-soft/40 px-4 py-3">
+              <p className="text-xs leading-relaxed text-ink-soft">{shareCaption}</p>
+            </div>
+
             <button
               type="button"
               onClick={downloadBadge}
-              className="condensed bg-purple px-7 py-4 text-base font-semibold tracking-[0.1em] text-white transition-colors hover:bg-purple-deep"
+              className="condensed text-xs font-semibold tracking-[0.14em] text-purple-deep underline-offset-4 hover:underline"
             >
-              Download your badge
+              Or download the badge image (best for Instagram posts)
             </button>
           </div>
         </div>
