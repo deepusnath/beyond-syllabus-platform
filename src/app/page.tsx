@@ -11,6 +11,11 @@ import { getConversations, getIdeas, getPrototypes } from "@/lib/content";
 /* The poster's three "Beyond" pillars — the movement's framing. */
 const pillars = [
   {
+    title: "Beyond Syllabus",
+    tone: "text-ink",
+    copy: "Treating formal education as the beginning of learning rather than its boundary.",
+  },
+  {
     title: "Beyond Gatekeepers",
     tone: "text-signal",
     copy: "Making opportunity more accessible.",
@@ -19,11 +24,6 @@ const pillars = [
     title: "Beyond Borders",
     tone: "text-purple-deep",
     copy: "Connecting people beyond geography and institutions.",
-  },
-  {
-    title: "Beyond Syllabus",
-    tone: "text-ink",
-    copy: "Treating formal education as the beginning of learning rather than its boundary.",
   },
 ];
 
