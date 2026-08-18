@@ -107,14 +107,16 @@ export default async function ConversationPage({
           <RecordList title="Key questions" items={conversation.keyQuestions} />
           <RecordList title="Important observations" items={conversation.observations} />
 
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div className="border-t-4 border-mint pt-4">
-              <RecordList title="Where we agreed" items={conversation.agreements} />
+          {(conversation.agreements.length > 0 || conversation.disagreements.length > 0) && (
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="border-t-4 border-mint pt-4">
+                <RecordList title="Where we agreed" items={conversation.agreements} />
+              </div>
+              <div className="border-t-4 border-signal pt-4">
+                <RecordList title="Where we disagreed" items={conversation.disagreements} tone="text-signal" />
+              </div>
             </div>
-            <div className="border-t-4 border-signal pt-4">
-              <RecordList title="Where we disagreed" items={conversation.disagreements} tone="text-signal" />
-            </div>
-          </div>
+          )}
 
           <RecordList title="Proposed solutions" items={conversation.proposedSolutions} tone="text-purple-deep" />
 
@@ -165,6 +167,7 @@ export default async function ConversationPage({
             </ul>
           </section>
 
+          {conversation.resources.length > 0 && (
           <section>
             <h2 className="kicker">Documentation</h2>
             <ul className="mt-3 space-y-3">
@@ -189,6 +192,7 @@ export default async function ConversationPage({
               ))}
             </ul>
           </section>
+          )}
         </aside>
       </div>
     </article>

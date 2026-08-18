@@ -36,14 +36,14 @@ export function Chip({
   );
 }
 
-/** Marks fictional seed content, everywhere it appears. */
+/** Marks illustrative worked examples, everywhere they appear. */
 export function SampleBadge({ className }: { className?: string }) {
   return (
     <span
       className={`condensed inline-flex items-center rounded-chip border border-dashed border-ink-soft/60 px-2 py-0.5 text-[0.65rem] font-medium tracking-[0.15em] text-ink-soft ${className ?? ""}`}
-      title="Fictional seed content used to develop the platform — not a confirmed record."
+      title="A worked example showing what will appear here — replaced by real records as the journey produces them."
     >
-      Sample content
+      Illustrative example
     </span>
   );
 }

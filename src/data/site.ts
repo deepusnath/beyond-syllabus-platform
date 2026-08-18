@@ -19,3 +19,6 @@ export const site: SiteConfig = {
   social: [],
   registrationUrl: undefined,
 };
+
+/** Participation submissions are delivered here until a backend exists. */
+export const participateEmail = "deepu@fayausa.com";

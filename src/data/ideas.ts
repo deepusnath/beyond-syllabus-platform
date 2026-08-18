@@ -1,23 +1,26 @@
 import type { Idea } from "@/lib/types";
 
 /*
- * ⚠ SAMPLE CONTENT — fictional seed ideas demonstrating how ideas are
- * captured and evolve through the status pipeline.
+ * The idea pipeline. Until the documented conversations produce their
+ * first real ideas, the pipeline holds ILLUSTRATIVE EXAMPLES (sample:
+ * true — rendered with a visible badge): worked examples, grounded in
+ * the movement's published thinking, that show how an idea travels from
+ * conversation to recommendation. Each is replaced by real records as
+ * they emerge.
  */
 export const ideas: Idea[] = [
   {
     slug: "portfolio-assessment",
     title: "Portfolio-based assessment, piloted alongside exams",
     problem:
-      "High-stakes exams certify memory of covered content, not capability. Employers discount the signal; students optimise for the wrong target.",
+      "High-stakes examinations concentrate enormous consequence behind a narrow gate: they certify memory of covered content rather than demonstrated capability, and too much of a learner's future rides on too little evidence.",
     intervention:
-      "Run a term-long pilot where a cohort maintains an evidenced portfolio of real work, assessed against a published rubric — alongside, not instead of, existing exams — and publish the comparison.",
-    originConversationSlug: "what-needs-to-change",
-    contributors: ["Student communities (Conversation 01)", "Industry voices (Conversation 03)"],
+      "A term-long pilot in which a cohort maintains an evidenced portfolio of real work, assessed against a published rubric — alongside, not instead of, existing exams — with the comparison published either way.",
+    contributors: ["Illustrative example — drawn from the movement's published positions"],
     stakeholders: ["students", "industry", "educators"],
     evidence: [
-      "Consistent student demand across communities in Conversation 01.",
-      "Industry participants in Conversation 03 named portfolios as their most-trusted hiring signal.",
+      "A central argument of the movement's published thinking — see “The Fishbowl Is Not the Future”.",
+      "Evidence from the documented conversations will be linked here as it accumulates.",
     ],
     feasibility: "high",
     status: "prototyping",
@@ -28,13 +31,12 @@ export const ideas: Idea[] = [
     slug: "open-curriculum-review",
     title: "A public, student-maintained curriculum review",
     problem:
-      "Curricula lag the world they prepare students for, and there is no standing channel through which learners can flag the gap.",
+      "Curricula lag the world they prepare students for, and there is no standing channel through which learners can flag the gap to the bodies that own curriculum decisions.",
     intervention:
-      "A public review of the curriculum, maintained by student communities and updated every term — what is stale, what is missing, what deserves to exist — addressed to the bodies that own curriculum decisions.",
-    originConversationSlug: "what-needs-to-change",
-    contributors: ["Student communities (Conversation 01)"],
+      "A public review of the curriculum, maintained by student communities and updated every term — what is stale, what is missing, what deserves to exist — addressed openly to curriculum bodies.",
+    contributors: ["Illustrative example — the kind of idea the student sessions are designed to surface"],
     stakeholders: ["students", "educators", "policymakers"],
-    evidence: ["Proposed and seconded across multiple student communities in Conversation 01."],
+    evidence: ["Evidence from the documented conversations will be linked here as it accumulates."],
     feasibility: "medium",
     status: "exploring",
     topicSlugs: ["curriculum", "student-agency"],
@@ -44,13 +46,12 @@ export const ideas: Idea[] = [
     slug: "teacher-learning-circles",
     title: "Teacher-led learning circles inside the working week",
     problem:
-      "Teacher development is treated as an occasional training event, not a working practice — so classrooms change slower than everything around them.",
+      "Teacher development is treated as an occasional training event rather than a working practice — so classrooms change slower than everything around them.",
     intervention:
       "Protected weekly time for teacher-led peer learning circles, modelled on the communities of practice that already work outside institutions.",
-    originConversationSlug: "what-should-education-become",
-    contributors: ["Educators (Conversation 02)", "Community leaders (Conversation 01)"],
+    contributors: ["Illustrative example — the kind of idea the educator sessions are designed to surface"],
     stakeholders: ["educators", "community", "policymakers"],
-    evidence: ["Educator consensus in Conversation 02 that development time is the binding constraint."],
+    evidence: ["Evidence from the documented conversations will be linked here as it accumulates."],
     feasibility: "medium",
     status: "idea",
     topicSlugs: ["teacher-development", "learning-communities"],

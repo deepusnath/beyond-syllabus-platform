@@ -17,7 +17,7 @@ export default function PrototypesPage() {
       <SectionHeading
         kicker="The prototype lab"
         title="From protest to prototype"
-        lede="Talking about broken systems is easy. Building alternatives is harder. This is where solutions developed during the initiative are documented — problem, hypothesis, build, evidence and results, in public."
+        lede="Talking about broken systems is easy. Building alternatives is harder. This is where solutions developed during the initiative are documented — problem, hypothesis, build, evidence and results, in public. The first real prototypes are selected at the November convergence; the worked example below (marked as illustrative) shows the documentation each one will carry."
       />
       <div className="mt-14 grid gap-8 md:grid-cols-2">
         {prototypes.map((p) => (

@@ -24,9 +24,8 @@ export const topics: Topic[] = [
     prototypeSlugs: ["portfolio-pilot"],
     quotes: [
       {
-        text: "Assessment is the hidden curriculum — change it and everything moves.",
-        attribution: "Learning sciences researcher, Conversation 02",
-        sample: true,
+        text: "Marks can remain a signal. They must stop becoming identity.",
+        attribution: "Deepu S Nath, “The Fishbowl Is Not the Future”",
       },
     ],
   },
@@ -55,13 +54,7 @@ export const topics: Topic[] = [
     conversationSlugs: ["what-should-education-become"],
     ideaSlugs: ["teacher-learning-circles"],
     prototypeSlugs: [],
-    quotes: [
-      {
-        text: "Reform the teacher's experience first; the classroom follows.",
-        attribution: "Professor of Education, Conversation 02",
-        sample: true,
-      },
-    ],
+    quotes: [],
   },
   {
     slug: "student-agency",
@@ -72,9 +65,8 @@ export const topics: Topic[] = [
     prototypeSlugs: [],
     quotes: [
       {
-        text: "Why does learning stop when the syllabus ends?",
-        attribution: "Student organiser, Conversation 01",
-        sample: true,
+        text: "What can I understand, build, solve, and contribute?",
+        attribution: "The question education should teach us to ask — Deepu S Nath, “The Fishbowl Is Not the Future”",
       },
     ],
   },
@@ -130,12 +122,6 @@ export const topics: Topic[] = [
     conversationSlugs: ["what-needs-to-change", "capabilities-the-future-demands"],
     ideaSlugs: ["teacher-learning-circles"],
     prototypeSlugs: [],
-    quotes: [
-      {
-        text: "Communities of practice are education infrastructure.",
-        attribution: "Learning community founder, Conversation 01",
-        sample: true,
-      },
-    ],
+    quotes: [],
   },
 ];

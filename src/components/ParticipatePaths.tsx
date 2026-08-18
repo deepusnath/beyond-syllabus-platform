@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { participateEmail } from "@/data/site";
 
 /*
- * Stakeholder-first participation. Forms are fully designed but submit to
- * a local acknowledgement until a backend is wired in — the payload shape
- * matches the analytics/participation model for later integration.
+ * Stakeholder-first participation. Submissions are delivered by composing
+ * an email to the organising team (participateEmail) — real delivery with
+ * zero backend. The payload shape matches the participation model, so a
+ * proper backend can replace the mailto handoff without changing the form.
  */
 
 const paths = [
@@ -94,6 +96,18 @@ export function ParticipatePaths() {
                   stakeholder: selected.id,
                   action,
                 });
+                const data = new FormData(e.currentTarget);
+                const subject = `[Beyond Syllabus] ${action} — ${selected.label}`;
+                const body = [
+                  `Name: ${data.get("name")}`,
+                  `Email: ${data.get("email")}`,
+                  `Organisation/community: ${data.get("organisation") || "—"}`,
+                  `Path: ${selected.label}`,
+                  `Action: ${action}`,
+                  "",
+                  String(data.get("message") || ""),
+                ].join("\n");
+                window.location.href = `mailto:${participateEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 setSubmitted(true);
               }}
             >
@@ -134,19 +148,20 @@ export function ParticipatePaths() {
                 Send it <span aria-hidden>→</span>
               </button>
               <p className="mt-4 text-xs text-ink-soft">
-                Submissions open fully once backend processing is connected — for now your entry is
-                recorded locally and nothing is sent anywhere.
+                Sending opens your email app with everything filled in, addressed to the organising
+                team — press send there and you&apos;re in the conversation.
               </p>
             </form>
           )}
 
           {submitted && (
             <div role="status" className="mt-10 max-w-2xl border-l-4 border-mint bg-purple-soft/60 p-6">
-              <p className="display text-2xl">Noted — thank you.</p>
+              <p className="display text-2xl">Almost there — press send.</p>
               <p className="mt-2 text-sm text-ink-soft">
-                Submission processing is still being connected, so nothing has left your browser
-                yet. Watch <span className="font-semibold">@purplemovement</span> for when
-                participation opens fully — or just show up on the next live date.
+                Your email app should have opened with your details addressed to the organising
+                team ({participateEmail}). Press send there to complete it. If it didn&apos;t open,
+                email us directly at <span className="font-semibold">{participateEmail}</span> —
+                or just show up on the next live date.
               </p>
             </div>
           )}

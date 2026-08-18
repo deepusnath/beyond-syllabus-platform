@@ -21,7 +21,7 @@ export default function IdeasPage() {
       <SectionHeading
         kicker="The idea pipeline"
         title="Ideas that evolve"
-        lede="Every actionable idea surfaced in a conversation is captured here with its problem, its proposed intervention and its evidence — and tracked as it moves through the pipeline: idea, exploring, prototyping, testing, validated, recommended."
+        lede="Every actionable idea surfaced in a conversation is captured here with its problem, its proposed intervention and its evidence — and tracked as it moves through the pipeline: idea, exploring, prototyping, testing, validated, recommended. Until the sessions produce their first real ideas, the worked examples below (marked as illustrative) show exactly how an idea will travel."
       />
       <div className="mt-14 grid gap-8 lg:grid-cols-2">
         {ideas.map((idea) => (

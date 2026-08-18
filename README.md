@@ -61,11 +61,12 @@ Everything renders from `src/data/`:
 - **Prototypes** — `src/data/prototypes.ts`
 - **Site config & social links** — `src/data/site.ts`
 
-### Sample content
+### Illustrative examples
 
-Seed entries carry `sample: true` and render a dashed **“Sample content”** badge everywhere they
-appear. Replace them with confirmed records as the initiative progresses; remove the flag and the
-badge disappears.
+Entries carrying `sample: true` render a dashed **“Illustrative example”** badge everywhere they
+appear — worked examples showing what a section will hold (ideas, prototypes) until the journey
+produces real records. Replace them and remove the flag as real content lands. Future sessions
+carry future-tense preview records, not fabricated ones.
 
 ### Livestream
 
@@ -142,4 +143,5 @@ If the team grows beyond a shared passcode, per-person GitHub OAuth is the upgra
 ## Honesty rules baked in
 
 - No fabricated reports: `/outcomes` shows **IN DEVELOPMENT** until the December report exists.
-- No invented speakers, partners, endorsements or URLs — sample data is fictional and labelled.
+- No invented speakers, partners, endorsements, quotes or URLs — illustrative examples are
+  clearly labelled and never impersonate real records.

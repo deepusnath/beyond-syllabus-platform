@@ -1,9 +1,9 @@
 import type { Conversation } from "@/lib/types";
 
 /*
- * ⚠ SAMPLE CONTENT — these conversation records are fictional seed data
- * demonstrating the documentation format. Real records are published
- * after each event.
+ * The public record. Past sessions carry their real recording and their
+ * documentation status; future sessions carry a preview of what their
+ * record will hold. Nothing here is fictional.
  */
 export const conversations: Conversation[] = [
   {
@@ -11,49 +11,48 @@ export const conversations: Conversation[] = [
     title: "What needs to change?",
     eventId: "listen",
     date: "2026-08-15",
-    participantSlugs: [],
+    participantSlugs: [
+      "claire-c-john",
+      "nino-k-m",
+      "aparna-rajesh",
+      "fathima-basheer",
+      "prakhar-sharma",
+      "diya-bhatt",
+      "aromal-m",
+      "kavya",
+      "parvathy-v-nair",
+      "salahudheen-thajudheen",
+      "vedha-mahadevan",
+      "arthalal-c",
+      "bhavya-sunil",
+      "akshat-pradeep",
+      "arundhathi-krishna",
+    ],
     stakeholders: ["students", "community"],
     topicSlugs: ["student-agency", "assessment", "curriculum", "learning-communities"],
+    videoUrl: "https://www.youtube.com/embed/qXdBTk5XFsE",
     summary:
-      "The opening conversation of Beyond Syllabus. Students and student communities describe where the system loses them: assessment that rewards memory over capability, curricula that lag the world by a decade, and the absence of any channel through which learners can shape what they learn.",
+      "The opening conversation of Beyond Syllabus, streamed live on August 15. Fifteen voices from student communities, campus chapters and learning collectives put the generation's own experience of the education system on the record — the full recording is above. The written documentation of this session — summary, key questions, areas of agreement and disagreement, and proposed solutions — is being prepared and will be published on this page.",
     transcriptStatus: "in-progress",
-    keyQuestions: [
-      "Why does learning stop when the syllabus ends?",
-      "Who is assessment actually for?",
-      "What would students build if they could change one thing tomorrow?",
-    ],
-    observations: [
-      "Students describe peer communities, not classrooms, as where their most useful learning happens.",
-      "The gap is not motivation — it is the absence of legitimate alternatives to marks.",
-    ],
-    agreements: [
-      "Assessment reform is the highest-priority demand across every student community present.",
-      "Students want a permanent feedback channel into curriculum decisions.",
-    ],
-    disagreements: [
-      "Whether change should come through the existing system or by building parallel structures alongside it.",
-    ],
-    proposedSolutions: [
-      "A student-maintained public review of the curriculum, updated every term.",
-      "Portfolio-based assessment piloted alongside — not instead of — existing exams.",
-    ],
+    keyQuestions: ["What needs to change?"],
+    observations: [],
+    agreements: [],
+    disagreements: [],
+    proposedSolutions: [],
     resources: [
       {
         id: "doc-listen-summary",
-        title: "Session summary (PDF)",
+        title: "Session summary",
         kind: "summary",
         status: "in-development",
-        sample: true,
       },
       {
         id: "doc-listen-transcript",
         title: "Full transcript",
         kind: "transcript",
         status: "in-development",
-        sample: true,
       },
     ],
-    sample: true,
   },
   {
     slug: "what-should-education-become",
@@ -64,37 +63,21 @@ export const conversations: Conversation[] = [
     stakeholders: ["educators", "researchers", "policymakers"],
     topicSlugs: ["teacher-development", "assessment", "higher-education", "policy"],
     summary:
-      "Academics and policymakers respond to the student conversation. The discussion moves from diagnosis to design: if the constraint is assessment, what would credible alternatives look like — and what would it take for policy to permit them at scale?",
+      "On September 5, academics, researchers and policymakers join the journey — responding to what students put on the record in the opening session, and moving the conversation from diagnosis to design. Once the session ends, this page becomes its permanent record: the recording, a written summary, the transcript, the questions asked, where the room agreed, where it disagreed, and what it proposed.",
     transcriptStatus: "pending",
-    keyQuestions: [
-      "What should education optimise for when content is freely available?",
-      "What evidence would convince a regulator to permit alternative assessment?",
-    ],
-    observations: [
-      "Educators and students converge on the same diagnosis from opposite directions.",
-      "Policy participants stress that pilots with honest measurement move faster than mandates.",
-    ],
-    agreements: [
-      "Teacher development is under-invested relative to its leverage.",
-      "Pilots need published results — success or failure — to build policy credibility.",
-    ],
-    disagreements: [
-      "How much standardisation is compatible with genuine learner agency.",
-    ],
-    proposedSolutions: [
-      "Teacher-led learning circles with dedicated time inside the working week.",
-      "A published evidence protocol for every Beyond Syllabus pilot.",
-    ],
+    keyQuestions: ["What should education become?"],
+    observations: [],
+    agreements: [],
+    disagreements: [],
+    proposedSolutions: [],
     resources: [
       {
-        id: "doc-question-summary",
-        title: "Session summary (PDF)",
+        id: "doc-question-record",
+        title: "Session record — publishes after the session",
         kind: "summary",
         status: "in-development",
-        sample: true,
       },
     ],
-    sample: true,
   },
   {
     slug: "capabilities-the-future-demands",
@@ -105,34 +88,20 @@ export const conversations: Conversation[] = [
     stakeholders: ["industry", "global", "community"],
     topicSlugs: ["employability", "skills", "future-of-work", "ai-and-education", "industry-academia-gap"],
     summary:
-      "Across the 24-hour relay, industry leaders and global communities compare what they hire for against what systems certify. A consistent picture emerges: evidence of real work — portfolios, contributions, shipped projects — is the signal employers trust most and education produces least.",
+      "On October 2, a 24-hour global relay follows the sun — industry leaders, practitioners and international communities, region by region, on the capabilities the future will actually demand. This page will hold the relay's complete record: recordings from each leg, summaries, transcripts, and the picture that emerges when many regions answer the same question in their own accents.",
     transcriptStatus: "pending",
-    keyQuestions: [
-      "What do employers actually verify before they hire?",
-      "Which capabilities survive contact with AI-assisted work?",
-    ],
-    observations: [
-      "Every region reports the same degree-to-capability gap in different accents.",
-      "Communities of practice repeatedly appear as the bridge institutions haven't built.",
-    ],
-    agreements: [
-      "Portfolios of real work are a stronger signal than transcripts of covered content.",
-    ],
-    disagreements: [
-      "Whether industry should co-design curriculum or simply publish its capability demands.",
-    ],
-    proposedSolutions: [
-      "A shared, public capability framework that any learner can evidence against.",
-    ],
+    keyQuestions: ["What capabilities will the future demand?"],
+    observations: [],
+    agreements: [],
+    disagreements: [],
+    proposedSolutions: [],
     resources: [
       {
-        id: "doc-connect-summary",
-        title: "Relay documentation",
+        id: "doc-connect-record",
+        title: "Relay documentation — publishes after the relay",
         kind: "summary",
         status: "in-development",
-        sample: true,
       },
     ],
-    sample: true,
   },
 ];
