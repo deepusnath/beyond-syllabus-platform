@@ -13,17 +13,17 @@ const pillars = [
   {
     title: "Beyond Syllabus",
     tone: "text-ink",
-    copy: "Treating formal education as the beginning of learning rather than its boundary.",
+    copy: "Learning begins where the syllabus ends.",
   },
   {
     title: "Beyond Gatekeepers",
     tone: "text-signal",
-    copy: "Making opportunity more accessible.",
+    copy: "Opportunity that doesn't ask permission.",
   },
   {
     title: "Beyond Borders",
     tone: "text-purple-deep",
-    copy: "Connecting people beyond geography and institutions.",
+    copy: "One generation, connected beyond geography.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function HomePage() {
         <SectionHeading
           kicker="This is not a conference"
           title="A public process, documented in the open"
-          lede="Beyond Syllabus is a structured series of stakeholder conversations running from August 2026 to Republic Day 2027. Every conversation leaves evidence. Evidence becomes ideas, ideas become prototypes — and on January 26, the documentation and working prototypes are handed to the decision makers of every stakeholder group."
+          lede="Stakeholder conversations, held in the open from August 2026 to Republic Day 2027. Conversations leave evidence. Evidence becomes ideas. Ideas become prototypes. And on January 26, all of it lands in the hands of the decision makers of every stakeholder group."
         />
         <div className="mt-14 grid gap-px bg-ink sm:grid-cols-3">
           {pillars.map((p, i) => (
