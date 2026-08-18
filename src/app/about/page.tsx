@@ -15,7 +15,7 @@ export default function AboutPage() {
       <SectionHeading
         kicker="About · Bridge The Gap 4.0"
         title="Why this exists"
-        lede="Beyond Syllabus is a five-month initiative by The Purple Movement focused on reimagining education for the next generation. It is not another discussion about what is wrong with education. It is a structured attempt to build credible alternatives."
+        lede="Beyond Syllabus is a six-month initiative by The Purple Movement focused on reimagining education for the next generation. It is not another discussion about what is wrong with education. It is a structured attempt to build credible alternatives."
       />
 
       <div className="mt-16 grid gap-12 lg:grid-cols-[1.3fr_1fr]">

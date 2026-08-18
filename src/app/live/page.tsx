@@ -26,7 +26,7 @@ export default function LivePage() {
           <div className="border-2 border-ink p-6">
             <Kicker>Context</Kicker>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Beyond Syllabus is a five-month journey — six stages, each adding a stakeholder
+              Beyond Syllabus is a six-month journey — six stages, each adding a stakeholder
               group. What is said on this stream becomes part of the public record.
             </p>
             <Link

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Beyond Syllabus",
   },
   description:
-    "Beyond Syllabus is a five-month stakeholder initiative bringing students, educators, researchers, industry, policymakers and communities together to move from conversations about education to practical solutions and working prototypes.",
+    "Beyond Syllabus is a six-month stakeholder initiative bringing students, educators, researchers, industry, policymakers and communities together to move from conversations about education to practical solutions and working prototypes.",
   openGraph: {
     siteName: "Beyond Syllabus",
     type: "website",

@@ -34,7 +34,7 @@ function eventSeriesJsonLd() {
     "@type": "EventSeries",
     name: "Beyond Syllabus — Bridge The Gap 4.0",
     description:
-      "A five-month stakeholder initiative to redesign education for the next generation, ending in recommendations and working prototypes handed to decision makers.",
+      "A six-month stakeholder initiative to redesign education for the next generation, ending in recommendations and working prototypes handed to decision makers.",
     organizer: { "@type": "Organization", name: "The Purple Movement" },
     startDate: "2026-08-15",
     endDate: "2027-01-26",
