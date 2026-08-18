@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAuthoritativeSpeakers } from "@/lib/voices-admin";
+import { getEvents } from "@/lib/content";
 import { PosterGenerator } from "@/components/admin/PosterGenerator";
 
 export const dynamic = "force-dynamic";
@@ -17,7 +18,7 @@ export default async function VoicePosterPage({ params }: { params: Promise<{ sl
       </Link>
       <h1 className="display mt-3 text-4xl sm:text-5xl">Poster: {speaker.name}</h1>
       <div className="mt-10">
-        <PosterGenerator speaker={speaker} />
+        <PosterGenerator speaker={speaker} events={getEvents()} />
       </div>
     </main>
   );
