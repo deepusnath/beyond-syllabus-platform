@@ -216,5 +216,17 @@
       "s-question-1"
     ],
     "conversationSlugs": []
+  },
+  {
+    "slug": "jins-thomas",
+    "name": "Jins Thomas",
+    "role": "Professional Development Coach for Educators",
+    "organisation": "Self Employed",
+    "category": "educators",
+    "photo": "/voices/jins-thomas.jpg",
+    "sessionIds": [
+      "s-question-1"
+    ],
+    "conversationSlugs": []
   }
 ]
