@@ -204,5 +204,17 @@
       "s-question-1"
     ],
     "conversationSlugs": []
+  },
+  {
+    "slug": "rajagopal-cv",
+    "name": "Rajagopal CV",
+    "role": "Senior Consultant - Admission & Outreach",
+    "organisation": "National Law School of India University",
+    "category": "educators",
+    "photo": "/voices/rajagopal-cv.jpg",
+    "sessionIds": [
+      "s-question-1"
+    ],
+    "conversationSlugs": []
   }
 ]
