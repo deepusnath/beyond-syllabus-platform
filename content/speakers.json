@@ -192,5 +192,17 @@
       "s-build-1"
     ],
     "conversationSlugs": []
+  },
+  {
+    "slug": "sobhana-jaya-madhavan",
+    "name": "Sobhana Jaya-Madhavan",
+    "role": "International Consultant",
+    "organisation": "MuchMagic Global Consultancy",
+    "category": "educators",
+    "photo": "/voices/sobhana-jaya-madhavan.jpg",
+    "sessionIds": [
+      "s-question-1"
+    ],
+    "conversationSlugs": []
   }
 ]
