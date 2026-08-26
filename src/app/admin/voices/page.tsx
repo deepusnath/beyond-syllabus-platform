@@ -18,6 +18,12 @@ export default async function AdminVoicesPage() {
         <h1 className="display text-4xl sm:text-5xl">Voices</h1>
         <div className="flex items-center gap-3">
           <Link
+            href="/admin/submissions"
+            className="condensed border-2 border-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] text-ink hover:bg-purple-soft"
+          >
+            Submissions
+          </Link>
+          <Link
             href="/admin/voices/new"
             className="condensed bg-purple px-5 py-3 text-sm font-semibold tracking-[0.12em] text-white hover:bg-purple-deep"
           >

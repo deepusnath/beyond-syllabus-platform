@@ -5,10 +5,10 @@ import { track } from "@/lib/analytics";
 import { participateEmail } from "@/data/site";
 
 /*
- * Stakeholder-first participation. Submissions are delivered by composing
- * an email to the organising team (participateEmail) — real delivery with
- * zero backend. The payload shape matches the participation model, so a
- * proper backend can replace the mailto handoff without changing the form.
+ * Stakeholder-first participation. Submissions POST to /api/participate,
+ * which records each one as a commit on the submissions branch. If that
+ * fails (offline, endpoint down), the form falls back to composing an
+ * email to the organising team (participateEmail) so nothing is lost.
  */
 
 const paths = [
@@ -33,7 +33,8 @@ const actions = [
 export function ParticipatePaths() {
   const [selected, setSelected] = useState<(typeof paths)[number] | null>(null);
   const [action, setAction] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState<false | "server" | "mailto">(false);
+  const [sending, setSending] = useState(false);
 
   return (
     <div>
@@ -89,26 +90,55 @@ export function ParticipatePaths() {
           {action && !submitted && (
             <form
               className="mt-10 max-w-2xl border-2 border-ink p-6 sm:p-8"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
+                if (sending) return;
                 track({
                   name: "participation_submission",
                   stakeholder: selected.id,
                   action,
                 });
                 const data = new FormData(e.currentTarget);
+                const fields = {
+                  name: String(data.get("name") || ""),
+                  email: String(data.get("email") || ""),
+                  organisation: String(data.get("organisation") || ""),
+                  message: String(data.get("message") || ""),
+                  website: String(data.get("website") || ""),
+                };
+                setSending(true);
+                try {
+                  const res = await fetch("/api/participate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      form: "participate",
+                      stakeholder: selected.id,
+                      action,
+                      ...fields,
+                    }),
+                  });
+                  if (res.ok) {
+                    setSubmitted("server");
+                    return;
+                  }
+                } catch {
+                  // Fall through to the mailto handoff below.
+                } finally {
+                  setSending(false);
+                }
                 const subject = `[Beyond Syllabus] ${action} | ${selected.label}`;
                 const body = [
-                  `Name: ${data.get("name")}`,
-                  `Email: ${data.get("email")}`,
-                  `Organisation/community: ${data.get("organisation") || "-"}`,
+                  `Name: ${fields.name}`,
+                  `Email: ${fields.email}`,
+                  `Organisation/community: ${fields.organisation || "-"}`,
                   `Path: ${selected.label}`,
                   `Action: ${action}`,
                   "",
-                  String(data.get("message") || ""),
+                  fields.message,
                 ].join("\n");
                 window.location.href = `mailto:${participateEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                setSubmitted(true);
+                setSubmitted("mailto");
               }}
             >
               <p className="display text-2xl">
@@ -116,6 +146,11 @@ export function ParticipatePaths() {
                 <span className="text-ink-soft">{selected.label.toLowerCase()}</span>
               </p>
               <div className="mt-6 grid gap-5">
+                {/* Honeypot: hidden from people, filled by naive bots. */}
+                <label className="hidden" aria-hidden="true">
+                  Website
+                  <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+                </label>
                 <label className="block">
                   <span className="kicker">Name</span>
                   <input required name="name" type="text" autoComplete="name" className="mt-2 w-full border-2 border-ink bg-paper px-4 py-2.5 text-sm" />
@@ -143,25 +178,37 @@ export function ParticipatePaths() {
               </div>
               <button
                 type="submit"
-                className="condensed mt-8 inline-flex items-center gap-3 bg-ink px-7 py-4 text-base font-semibold tracking-[0.1em] text-paper transition-colors hover:bg-purple-deep"
+                disabled={sending}
+                className="condensed mt-8 inline-flex items-center gap-3 bg-ink px-7 py-4 text-base font-semibold tracking-[0.1em] text-paper transition-colors hover:bg-purple-deep disabled:opacity-60"
               >
-                Send it <span aria-hidden>→</span>
+                {sending ? "Sending…" : "Send it"} <span aria-hidden>→</span>
               </button>
               <p className="mt-4 text-xs text-ink-soft">
-                Sending opens your email app with everything filled in, addressed to the organising
-                team. Press send there and you&apos;re in the conversation.
+                Your submission goes straight to the organising team. We only use your email to
+                follow up on what you send.
               </p>
             </form>
           )}
 
-          {submitted && (
+          {submitted === "server" && (
+            <div role="status" className="mt-10 max-w-2xl border-l-4 border-mint bg-purple-soft/60 p-6">
+              <p className="display text-2xl">Received. You&apos;re in the conversation.</p>
+              <p className="mt-2 text-sm text-ink-soft">
+                Your submission is recorded with the organising team. If you want to add anything,
+                email us at <span className="font-semibold">{participateEmail}</span>, or just show
+                up on the next live date.
+              </p>
+            </div>
+          )}
+          {submitted === "mailto" && (
             <div role="status" className="mt-10 max-w-2xl border-l-4 border-mint bg-purple-soft/60 p-6">
               <p className="display text-2xl">Almost there. Press send.</p>
               <p className="mt-2 text-sm text-ink-soft">
-                Your email app should have opened with your details addressed to the organising
-                team ({participateEmail}). Press send there to complete it. If it didn&apos;t open,
-                email us directly at <span className="font-semibold">{participateEmail}</span>,
-                or just show up on the next live date.
+                We couldn&apos;t reach the server, so your email app should have opened with your
+                details addressed to the organising team ({participateEmail}). Press send there to
+                complete it. If it didn&apos;t open, email us directly at{" "}
+                <span className="font-semibold">{participateEmail}</span>, or just show up on the
+                next live date.
               </p>
             </div>
           )}

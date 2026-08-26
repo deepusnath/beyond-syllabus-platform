@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local-dev participation submissions (real ones live on the submissions branch)
+content/submissions/

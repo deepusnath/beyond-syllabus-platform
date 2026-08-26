@@ -110,6 +110,8 @@ export function JoinTheConversation() {
   const [videoUrl, setVideoUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [via, setVia] = useState<"server" | "mailto">("server");
+  const [sending, setSending] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -129,14 +131,40 @@ export function JoinTheConversation() {
     return () => clearTimeout(id);
   }, [submitted, paint]);
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (sending) return;
     if (!answers.some((a) => a.trim())) {
       setError("Answer at least one of the three questions. That answer is the contribution.");
       return;
     }
     setError(null);
     track({ name: "participation_submission", stakeholder, action: "Join the conversation" });
+    setSending(true);
+    try {
+      const res = await fetch("/api/participate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form: "voice",
+          name,
+          email,
+          organisation,
+          stakeholder,
+          answers: answers.map((a) => a.trim()),
+          videoUrl,
+        }),
+      });
+      if (res.ok) {
+        setVia("server");
+        setSubmitted(true);
+        return;
+      }
+    } catch {
+      // Fall through to the mailto handoff below.
+    } finally {
+      setSending(false);
+    }
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
@@ -148,6 +176,7 @@ export function JoinTheConversation() {
     ].join("\n");
     const subject = `[Beyond Syllabus] Voice: ${name || "a new participant"}`;
     window.location.href = `mailto:${participateEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setVia("mailto");
     setSubmitted(true);
   }
 
@@ -248,12 +277,24 @@ export function JoinTheConversation() {
       <div className="grid gap-8 lg:grid-cols-[1fr_24rem]">
         <div>
           <div role="status" className="border-l-4 border-mint bg-purple-soft/50 p-6">
-            <p className="display text-3xl">Your voice is in. Press send.</p>
-            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Your email app should have opened with your answers addressed to the organising team
-              ({participateEmail}). Press send there to complete it. If it didn&apos;t open, email
-              us directly.
-            </p>
+            {via === "server" ? (
+              <>
+                <p className="display text-3xl">Your voice is in.</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                  Your answers are recorded with the organising team. Want to add more later? Email
+                  us at {participateEmail}.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="display text-3xl">Your voice is in. Press send.</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                  We couldn&apos;t reach the server, so your email app should have opened with your
+                  answers addressed to the organising team ({participateEmail}). Press send there
+                  to complete it. If it didn&apos;t open, email us directly.
+                </p>
+              </>
+            )}
           </div>
           <div className="mt-8 space-y-5">
             <h3 className="display text-2xl">Now make it public.</h3>
@@ -398,13 +439,14 @@ export function JoinTheConversation() {
 
       <button
         type="submit"
-        className="condensed mt-8 inline-flex items-center gap-3 bg-purple px-8 py-4 text-base font-semibold tracking-[0.1em] text-white transition-colors hover:bg-purple-deep"
+        disabled={sending}
+        className="condensed mt-8 inline-flex items-center gap-3 bg-purple px-8 py-4 text-base font-semibold tracking-[0.1em] text-white transition-colors hover:bg-purple-deep disabled:opacity-60"
       >
-        Add my voice <span aria-hidden>→</span>
+        {sending ? "Sending…" : "Add my voice"} <span aria-hidden>→</span>
       </button>
       <p className="mt-4 text-xs text-ink-soft">
-        Sending opens your email app with everything filled in, addressed to the organising team.
-        You&apos;ll also get a badge and a personal share link.
+        Your answers go straight to the organising team. You&apos;ll also get a badge and a
+        personal share link. We only use your email to follow up on what you send.
       </p>
     </form>
   );

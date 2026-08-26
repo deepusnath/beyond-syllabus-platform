@@ -1,4 +1,4 @@
-import { writeFile, unlink } from "node:fs/promises";
+import { mkdir, writeFile, unlink } from "node:fs/promises";
 import path from "node:path";
 
 /*
@@ -49,9 +49,25 @@ async function gh(pathname: string, init?: RequestInit): Promise<Record<string, 
   return (await res.json()) as Record<string, unknown>;
 }
 
-async function commitToGitHub(changes: FileChange[], message: string): Promise<string> {
-  const ref = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`);
-  const headSha = (ref.object as { sha: string }).sha;
+/** Head sha of a branch; creates the branch from main's head if missing. */
+async function branchHead(branch: string): Promise<string> {
+  try {
+    const ref = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${branch}`);
+    return (ref.object as { sha: string }).sha;
+  } catch (error) {
+    if (branch === BRANCH || !String(error).includes("(404)")) throw error;
+    const main = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`);
+    const mainSha = (main.object as { sha: string }).sha;
+    await gh(`/repos/${OWNER}/${REPO}/git/refs`, {
+      method: "POST",
+      body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
+    });
+    return mainSha;
+  }
+}
+
+async function commitToGitHub(changes: FileChange[], message: string, branch: string = BRANCH): Promise<string> {
+  const headSha = await branchHead(branch);
   const headCommit = await gh(`/repos/${OWNER}/${REPO}/git/commits/${headSha}`);
   const baseTree = (headCommit.tree as { sha: string }).sha;
 
@@ -82,7 +98,7 @@ async function commitToGitHub(changes: FileChange[], message: string): Promise<s
     body: JSON.stringify({ message, tree: tree.sha, parents: [headSha] }),
   });
 
-  await gh(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, {
+  await gh(`/repos/${OWNER}/${REPO}/git/refs/heads/${branch}`, {
     method: "PATCH",
     body: JSON.stringify({ sha: commit.sha, force: false }),
   });
@@ -98,6 +114,7 @@ async function writeLocally(changes: FileChange[]): Promise<string> {
     if (change.content === null) {
       await unlink(target).catch(() => {});
     } else {
+      await mkdir(path.dirname(target), { recursive: true });
       await writeFile(target, change.content);
     }
   }
@@ -106,9 +123,15 @@ async function writeLocally(changes: FileChange[]): Promise<string> {
 
 /**
  * Publish a set of file changes as one commit. Retries once if the branch
- * moved between reading the head and updating the ref.
+ * moved between reading the head and updating the ref. Committing to a
+ * non-main `branch` (created from main on first use) records data in the
+ * repo without triggering a production deploy.
  */
-export async function publishChanges(changes: FileChange[], message: string): Promise<{ sha: string; mode: "github" | "local" }> {
+export async function publishChanges(
+  changes: FileChange[],
+  message: string,
+  branch?: string,
+): Promise<{ sha: string; mode: "github" | "local" }> {
   if (!token()) {
     if (process.env.NODE_ENV === "production") {
       throw new Error(
@@ -118,11 +141,11 @@ export async function publishChanges(changes: FileChange[], message: string): Pr
     return { sha: await writeLocally(changes), mode: "local" };
   }
   try {
-    return { sha: await commitToGitHub(changes, message), mode: "github" };
+    return { sha: await commitToGitHub(changes, message, branch), mode: "github" };
   } catch (error) {
     // One retry for ref races (another organiser published in between).
     if (String(error).includes("(422)") || String(error).includes("(409)")) {
-      return { sha: await commitToGitHub(changes, message), mode: "github" };
+      return { sha: await commitToGitHub(changes, message, branch), mode: "github" };
     }
     throw error;
   }
