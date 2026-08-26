@@ -95,6 +95,23 @@ export const interventions: Intervention[] = [
     relatedTopicSlugs: ["employability"],
     relatedIdeaSlugs: [],
   },
+  // Added by the organising team on 2026-08-25 through the yearly review
+  // cycle; the KTU order itself is the evidence.
+  {
+    slug: "u7",
+    category: "university",
+    text: "Six month internships during the degree, without a break of study.",
+    status: "adopted",
+    updates: [
+      {
+        date: "2023-11-25",
+        note: "KTU issued order U.O.No. 3068/2023/KTU revising the B.Tech internship norms: students can undertake a long term internship of four to six months in the eighth semester without a break of study. Industry asked for it and the university acted. The next move belongs to industry: making internship opportunities like this available at scale.",
+        sourceUrl: "/documents/3068-2023-KTU.pdf",
+      },
+    ],
+    relatedTopicSlugs: ["employability", "industry-academia-gap"],
+    relatedIdeaSlugs: [],
+  },
 
   /* ---- Industrial interventions ---- */
   {
@@ -110,13 +127,8 @@ export const interventions: Intervention[] = [
     slug: "i2",
     category: "industry",
     text: "Accept interns while they are still at college (remote or regular).",
-    status: "in-motion",
-    updates: [
-      {
-        date: "2026-08-25",
-        note: "KTU approved the six month internship as an after effect of this discussion. Industry asked for it and the university acted. The next move belongs to industry: making internship opportunities like this available at scale.",
-      },
-    ],
+    status: "recorded",
+    updates: [],
     relatedTopicSlugs: ["employability"],
     relatedIdeaSlugs: [],
   },
