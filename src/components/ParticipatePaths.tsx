@@ -35,6 +35,7 @@ export function ParticipatePaths() {
   const [action, setAction] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<false | "server" | "mailto">(false);
   const [sending, setSending] = useState(false);
+  const [failReason, setFailReason] = useState<string | null>(null);
 
   return (
     <div>
@@ -122,8 +123,9 @@ export function ParticipatePaths() {
                     setSubmitted("server");
                     return;
                   }
+                  setFailReason(`server answered ${res.status}`);
                 } catch {
-                  // Fall through to the mailto handoff below.
+                  setFailReason("the request could not be sent");
                 } finally {
                   setSending(false);
                 }
@@ -210,6 +212,9 @@ export function ParticipatePaths() {
                 <span className="font-semibold">{participateEmail}</span>, or just show up on the
                 next live date.
               </p>
+              {failReason && (
+                <p className="mt-2 text-xs text-ink-soft/70">Technical detail: {failReason}.</p>
+              )}
             </div>
           )}
         </section>

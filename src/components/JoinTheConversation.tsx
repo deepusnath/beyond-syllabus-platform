@@ -112,6 +112,7 @@ export function JoinTheConversation() {
   const [submitted, setSubmitted] = useState(false);
   const [via, setVia] = useState<"server" | "mailto">("server");
   const [sending, setSending] = useState(false);
+  const [failReason, setFailReason] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -160,8 +161,9 @@ export function JoinTheConversation() {
         setSubmitted(true);
         return;
       }
+      setFailReason(`server answered ${res.status}`);
     } catch {
-      // Fall through to the mailto handoff below.
+      setFailReason("the request could not be sent");
     } finally {
       setSending(false);
     }
@@ -293,6 +295,9 @@ export function JoinTheConversation() {
                   answers addressed to the organising team ({participateEmail}). Press send there
                   to complete it. If it didn&apos;t open, email us directly.
                 </p>
+                {failReason && (
+                  <p className="mt-2 text-xs text-ink-soft/70">Technical detail: {failReason}.</p>
+                )}
               </>
             )}
           </div>

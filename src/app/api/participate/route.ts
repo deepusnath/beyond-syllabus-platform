@@ -8,7 +8,9 @@ import { saveSubmission, type SubmissionRecord } from "@/lib/submissions";
  * strict field length caps. The record stores only what was typed.
  */
 
-const LIMIT = 5;
+// Generous per-IP budget: whole campuses share one NAT IP during live
+// sessions, so this only has to stop mindless flooding, not people.
+const LIMIT = 60;
 const WINDOW_MS = 10 * 60 * 1000;
 // Per-instance memory: resets on cold start, which is acceptable — this is
 // a speed bump against casual flooding, not a hard quota.
@@ -79,8 +81,10 @@ export async function POST(request: NextRequest) {
   try {
     await saveSubmission(record);
     return NextResponse.json({ ok: true });
-  } catch {
-    // The client falls back to the mailto handoff on any failure.
+  } catch (error) {
+    // Surface the cause in the function logs; the client falls back to
+    // the mailto handoff on any failure.
+    console.error("participate: could not record submission:", error);
     return NextResponse.json({ error: "Could not record the submission." }, { status: 500 });
   }
 }
