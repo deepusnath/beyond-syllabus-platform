@@ -58,10 +58,17 @@ async function branchHead(branch: string): Promise<string> {
     if (branch === BRANCH || !String(error).includes("(404)")) throw error;
     const main = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`);
     const mainSha = (main.object as { sha: string }).sha;
-    await gh(`/repos/${OWNER}/${REPO}/git/refs`, {
-      method: "POST",
-      body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
-    });
+    try {
+      await gh(`/repos/${OWNER}/${REPO}/git/refs`, {
+        method: "POST",
+        body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
+      });
+    } catch (createError) {
+      // Lost a creation race: the ref exists now, read its head.
+      if (!String(createError).includes("(422)")) throw createError;
+      const ref = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${branch}`);
+      return (ref.object as { sha: string }).sha;
+    }
     return mainSha;
   }
 }
