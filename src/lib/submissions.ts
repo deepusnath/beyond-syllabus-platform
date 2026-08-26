@@ -3,6 +3,12 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { CONTENT_REPO, contentToken, publishChanges } from "@/lib/github-content";
 
+const GH_HEADERS = (token: string) => ({
+  Authorization: `Bearer ${token}`,
+  Accept: "application/vnd.github+json",
+  "X-GitHub-Api-Version": "2022-11-28",
+});
+
 /*
  * Participation submissions, stored git-as-CMS style: one JSON file per
  * submission, committed to the dedicated `submissions` branch so public
@@ -36,11 +42,43 @@ export interface SubmissionRecord {
 export async function saveSubmission(record: SubmissionRecord): Promise<void> {
   const stamp = record.receivedAt.replace(/[:.]/g, "-");
   const name = `${stamp}-${randomUUID().slice(0, 8)}.json`;
-  await publishChanges(
-    [{ path: `${SUBMISSIONS_DIR}/${name}`, content: JSON.stringify(record, null, 2) + "\n" }],
-    `submission: ${record.form} (${record.stakeholder})`,
-    SUBMISSIONS_BRANCH,
+  const filePath = `${SUBMISSIONS_DIR}/${name}`;
+  const content = JSON.stringify(record, null, 2) + "\n";
+  const message = `submission: ${record.form} (${record.stakeholder})`;
+
+  const token = contentToken();
+  if (!token) {
+    // Local development: write to the working tree via the shared path.
+    await publishChanges([{ path: filePath, content }], message, SUBMISSIONS_BRANCH);
+    return;
+  }
+
+  // One-call file creation on the submissions branch. The path is unique
+  // per submission, so concurrent submissions never conflict, and this is
+  // several times faster than the blob/tree/commit/ref sequence, which
+  // matters: slow saves get cut off by impatient client networks.
+  const { owner, repo } = CONTENT_REPO;
+  const res = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
+    {
+      method: "PUT",
+      headers: GH_HEADERS(token),
+      body: JSON.stringify({
+        message,
+        content: Buffer.from(content, "utf-8").toString("base64"),
+        branch: SUBMISSIONS_BRANCH,
+      }),
+    },
   );
+  if (!res.ok) {
+    // 404 on PUT usually means the branch does not exist yet: fall back to
+    // the full path, which creates the branch from main first.
+    if (res.status === 404) {
+      await publishChanges([{ path: filePath, content }], message, SUBMISSIONS_BRANCH);
+      return;
+    }
+    throw new Error(`GitHub PUT ${filePath} failed (${res.status}): ${(await res.text()).slice(0, 300)}`);
+  }
 }
 
 const MAX_LISTED = 200;
