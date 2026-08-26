@@ -110,8 +110,13 @@ export const interventions: Intervention[] = [
     slug: "i2",
     category: "industry",
     text: "Accept interns while they are still at college (remote or regular).",
-    status: "recorded",
-    updates: [],
+    status: "in-motion",
+    updates: [
+      {
+        date: "2026-08-25",
+        note: "KTU approved the six month internship as an after effect of this discussion. Industry asked for it and the university acted. The next move belongs to industry: making internship opportunities like this available at scale.",
+      },
+    ],
     relatedTopicSlugs: ["employability"],
     relatedIdeaSlugs: [],
   },

@@ -9,7 +9,7 @@ import { present } from "@/lib/util";
 export const metadata: Metadata = {
   title: "Interventions",
   description:
-    "The intervention ledger: every recommendation from the 2023 Bridge The Gap action model, tracked in public until each is adopted, evolved, or honestly acknowledged as stalled.",
+    "The intervention ledger: the action model every stakeholder group wrote together at Bridge The Gap 2023, reviewed and updated every year, and tracked in public until each intervention is adopted, evolved, or honestly acknowledged as stalled.",
 };
 
 const categoryLabels: Record<InterventionCategory, string> = {
@@ -76,11 +76,11 @@ export default function InterventionsPage() {
       <SectionHeading
         kicker="Bridge The Gap · since 2023"
         title="The intervention ledger"
-        lede="In 2023, the first Bridge The Gap symposium produced an intervention action model: concrete recommendations for government, universities, industry, faculty, and the platform. This page tracks every one of them, in public, until each is adopted, evolved, or honestly acknowledged as stalled. Statuses come from the organising team. Recorded means no verified progress information yet."
+        lede="In 2023, before today's debate about skills, AI and employability went mainstream, the first Bridge The Gap symposium brought every stakeholder group around one table and produced an intervention action model: concrete recommendations for government, universities, industry, faculty, and the platform. The model is reviewed and updated every year, and this page tracks every recommendation in public until each is adopted, evolved, or honestly acknowledged as stalled. Statuses come from the organising team. Recorded means no verified progress information yet."
       />
 
-      {/* Lineage: only editions with documents in hand */}
-      <div className="mt-10 grid gap-px border border-ink bg-ink sm:grid-cols-2">
+      {/* Lineage: the annual cycle this ledger belongs to */}
+      <div className="mt-10 grid gap-px border border-ink bg-ink sm:grid-cols-3">
         <div className="bg-paper p-6">
           <p className="condensed text-xs font-semibold tracking-[0.2em] text-purple-deep">
             Bridge The Gap 1.0 · 2023
@@ -88,6 +88,16 @@ export default function InterventionsPage() {
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">
             Fostering Future Skills in Education: the symposium whose panel and breakout
             discussions produced this action model.
+          </p>
+        </div>
+        <div className="bg-paper p-6">
+          <p className="condensed text-xs font-semibold tracking-[0.2em] text-purple-deep">
+            Every year since
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            The stakeholders return, review the model against what actually happened, and
+            update it. Outcomes like KTU&apos;s approval of the six month internship grew out
+            of this cycle.
           </p>
         </div>
         <div className="bg-paper p-6">

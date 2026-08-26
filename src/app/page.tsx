@@ -72,6 +72,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Legacy: this did not start today */}
+      <section className="bg-ink text-paper">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
+          <p className="condensed text-xs font-semibold tracking-[0.2em] text-mint">
+            Since 2023 · Bridge The Gap
+          </p>
+          <h2 className="display mt-4 max-w-3xl text-4xl sm:text-5xl">
+            Today&apos;s noise? We saw it coming in 2023.
+          </h2>
+          <p className="mt-6 max-w-2xl leading-relaxed text-paper/80">
+            Beyond Syllabus is the fourth edition of Bridge The Gap, not a reaction to this
+            year&apos;s headlines. Back in 2023, before the current debate about skills, AI and
+            employability went mainstream, the first symposium brought government, universities,
+            industry, faculty and platform builders around one table and wrote an intervention
+            action model for exactly the shifts unfolding now. That model is reviewed and
+            updated every year, and it moves things: after industry asked for it, KTU approved
+            the six month internship. Now it is industry&apos;s turn to make those opportunities
+            available at scale.
+          </p>
+          <p className="mt-6 max-w-2xl leading-relaxed text-paper/80">
+            Every recommendation from that model is tracked in public, until each one is
+            adopted, evolved, or honestly acknowledged as stalled.
+          </p>
+          <CtaLink href="/interventions" tone="white" className="mt-10">
+            See the intervention ledger
+          </CtaLink>
+        </div>
+      </section>
+
       {/* The journey */}
       <section className="border-y border-purple-line bg-purple-soft/40">
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
