@@ -11,6 +11,7 @@ const typeLabels: Record<SearchRecordType, string> = {
   conversation: "Conversation",
   topic: "Topic",
   idea: "Idea",
+  intervention: "Intervention",
   prototype: "Prototype",
 };
 

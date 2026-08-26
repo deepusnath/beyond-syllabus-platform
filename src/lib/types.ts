@@ -150,6 +150,38 @@ export interface Prototype {
   sample?: boolean;
 }
 
+export type InterventionCategory =
+  | "government"
+  | "university"
+  | "industry"
+  | "faculty"
+  | "platform";
+
+export type InterventionStatus =
+  | "recorded" // transcribed from 2023; no verified progress information yet
+  | "in-motion"
+  | "adopted"
+  | "evolved" // absorbed into a newer intervention or idea
+  | "stalled"; // attempted and honestly acknowledged as not progressing
+
+export interface InterventionUpdate {
+  date: string;
+  note: string;
+  sourceUrl?: string;
+}
+
+/** One recommendation from the Bridge The Gap 2023 Intervention / Action Model. */
+export interface Intervention {
+  slug: string;
+  category: InterventionCategory;
+  /** Faithful 2023 wording, normalised for spelling only. */
+  text: string;
+  status: InterventionStatus;
+  updates: InterventionUpdate[];
+  relatedTopicSlugs: string[];
+  relatedIdeaSlugs: string[];
+}
+
 export interface DocumentResource {
   id: string;
   title: string;

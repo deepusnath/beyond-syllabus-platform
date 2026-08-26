@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/conversations",
     "/commons",
     "/ideas",
+    "/interventions",
     "/prototypes",
     "/outcomes",
     "/participate",

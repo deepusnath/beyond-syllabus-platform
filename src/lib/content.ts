@@ -5,10 +5,12 @@ import { conversations } from "@/data/conversations";
 import { topics } from "@/data/topics";
 import { ideas } from "@/data/ideas";
 import { prototypes } from "@/data/prototypes";
+import { interventions } from "@/data/interventions";
 import type {
   Conversation,
   Event,
   Idea,
+  Intervention,
   Prototype,
   Session,
   Speaker,
@@ -48,6 +50,8 @@ export const getIdeas = (): Idea[] => ideas;
 export const getIdea = (slug: string): Idea | undefined => ideas.find((i) => i.slug === slug);
 
 export const getPrototypes = (): Prototype[] => prototypes;
+
+export const getInterventions = (): Intervention[] => interventions;
 export const getPrototype = (slug: string): Prototype | undefined =>
   prototypes.find((p) => p.slug === slug);
 

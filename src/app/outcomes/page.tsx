@@ -77,6 +77,9 @@ export default function OutcomesPage() {
           <Link href="/prototypes" className="condensed border-2 border-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] hover:bg-purple-soft">
             What we built →
           </Link>
+          <Link href="/interventions" className="condensed border-2 border-ink px-5 py-3 text-sm font-semibold tracking-[0.12em] hover:bg-purple-soft">
+            The 2023 ledger →
+          </Link>
         </div>
       </section>
     </div>

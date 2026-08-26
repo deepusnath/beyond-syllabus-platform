@@ -2,6 +2,7 @@ import {
   getConversations,
   getEvents,
   getIdeas,
+  getInterventions,
   getPrototypes,
   getSpeakers,
   getTopics,
@@ -20,6 +21,7 @@ export type SearchRecordType =
   | "conversation"
   | "topic"
   | "idea"
+  | "intervention"
   | "prototype";
 
 export interface SearchRecord {
@@ -91,6 +93,17 @@ export function buildSearchIndex(): SearchRecord[] {
       snippet: i.problem,
       text: [i.title, i.problem, i.intervention].join(" ").toLowerCase(),
       sample: i.sample,
+    });
+  }
+  for (const iv of getInterventions()) {
+    records.push({
+      type: "intervention",
+      title: `${iv.slug.toUpperCase()}: ${iv.text}`,
+      href: "/interventions",
+      snippet: `From the 2023 Bridge The Gap action model. Status: ${iv.status}.`,
+      text: [iv.slug, iv.text, iv.status, ...iv.updates.map((u) => u.note)]
+        .join(" ")
+        .toLowerCase(),
     });
   }
   for (const p of getPrototypes()) {

@@ -1,14 +1,28 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Oswald } from "next/font/google";
+import localFont from "next/font/local";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ChromeGate } from "@/components/ChromeGate";
 import { getSite } from "@/lib/content";
 import "./globals.css";
 
-const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton" });
-const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// Fonts are self-hosted (OFL licences alongside each file in src/fonts/) so
+// builds never depend on reaching Google Fonts.
+const anton = localFont({
+  src: "../fonts/Anton-Regular.ttf",
+  weight: "400",
+  variable: "--font-anton",
+});
+const oswald = localFont({
+  src: "../fonts/Oswald-Variable.ttf",
+  weight: "200 700",
+  variable: "--font-oswald",
+});
+const inter = localFont({
+  src: "../fonts/Inter-Variable.ttf",
+  weight: "100 900",
+  variable: "--font-inter",
+});
 
 const site = getSite();
 
