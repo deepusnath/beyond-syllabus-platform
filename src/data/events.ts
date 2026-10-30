@@ -69,7 +69,7 @@ export const events: Event[] = [
     format: "in-person",
     location: "Kerala, India",
     description:
-      "An in-person gathering bringing the different perspectives together: students, educators, researchers, industry, policymakers and communities in one room, working on what can actually be built.",
+      "Rise Together 2026 brings every stakeholder group into one room in Kerala: students, educators, researchers, industry, policymakers and communities, working on what can actually be built.",
     confirmed: true,
   },
   {
